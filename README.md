@@ -10,14 +10,13 @@ Drag and drop a weapon onto a NPC
 - The NPC is represented by a cube
 - The NPC will hold the given weapon
 - Weapon can be swapped afterwards
-- The UI contains a list of weapons
-
-## Research questions
+- The UI contains a list of weaponsh questions
 ### Step 2-2 Specify
-1. How to implement a dropdown in editor UI for weapons?
-2. How to implement a dropdown with editor UI?
-3. How to implement a list of different weapons in editor UI?
-4. What component can be used for creating a drag and drop menu?
-5. What happens if you drag and drop onto two overlapping gameobjects?
-6. How can objects that are created by the UI behave properly when dragged onto a nested gameobject?
+1. How to implement a dropdown in editor UI for weapons? (bryan)
+2. How to implement a dropdown with editor UI? (bryan)
+3. How to implement a list of different weapons in editor UI? (akram)
+4. What component can be used for creating a drag and drop menu? (daniel)
+5. What happens if you drag and drop onto two overlapping gameobjects? (michelle)
+6. How can objects that are created by the UI behave properly when dragged onto a nested gameobject? (franz)
+
 
