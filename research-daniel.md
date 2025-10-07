@@ -12,7 +12,6 @@
 - [Learn UI Toolkit by creating useful Editor Window (Prefab Spawner) - YouTube](https://www.youtube.com/watch?v=Xy_jvBg1vS0)
 	- Placing assets via editor ui (see end result)
 - [Tutorial Create an item management editor window with UI Toolkit - Unity Engine - Unity Discussions](https://discussions.unity.com/t/tutorial-create-an-item-management-editor-window-with-ui-toolkit/849953)
-	- 
 - [Unity - Manual: Create a drag-and-drop list and tree views between windows](https://docs.unity3d.com/6000.3/Documentation/Manual/UIE-create-drag-and-drop-list-treeview-between-windows.html)
 	- Unity made tutorial about dragging items between ui
 
