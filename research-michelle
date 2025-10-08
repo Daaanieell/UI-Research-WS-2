@@ -1,2 +1,12 @@
 What happens if you drag and drop onto two overlapping gameobjects?
 
+In Unity UI Toolkit, only the topmost element in the visual stacking order receives pointer and drag-and-drop events.
+The system uses the picking order (based on visual stacking) to determine which element is under the pointer.
+The topmost VisualElement handles the events, while elements underneath are ignored.
+
+For Scene GameObjects, Unity performs an internal raycast and selects the first object hit as the target.
+Objects behind the topmost one do not receive any drag-and-drop events.
+
+sources:
+https://docs.unity3d.com/6000.2/Documentation/Manual/SelectionPiercingMenu.html
+https://docs.unity3d.com/ScriptReference/HandleUtility.PickGameObject.html
