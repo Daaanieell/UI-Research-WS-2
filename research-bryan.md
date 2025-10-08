@@ -46,3 +46,34 @@ public class TestEditor : EditorWindow
 }
 ```
 
+---
+
+For the EditorUI you need to create a folder called **Editor**, inside you let the script inherit from **Editor**, you return a VisualElement and override the function CreateInspectorGUI(),  since it wants a VisualElement, you create one, in this case I added a DropdownField() to it and filled it with a few options. 
+
+You attach this script to a GameObject who inherits from a MonoBehaviour(al) script, the name of this script is also the name you reference in your EditorUI script, in this case it's testscript: (_[CustomEditor(typeof(testscript))]_)
+
+
+
+<img width="580" height="166" alt="image" src="https://github.com/user-attachments/assets/6901031b-e9b2-41de-91db-759f481bf622" />
+
+_Realised last example wasn't the EditorUI, this one is_ 
+```
+[CustomEditor(typeof(testscript))]
+public class EditorUiExample : Editor
+{
+
+    public override VisualElement CreateInspectorGUI()
+    {
+        var container = new VisualElement();
+        var dropdown = new DropdownField();
+        dropdown.choices = new List<string> {"Tomahawk", "Shotty", "Glock"};
+        
+        dropdown.choices.Add("Banana");
+        dropdown.value = "Tomahawk";
+
+        container.Add(dropdown);
+        return container;
+    }
+}
+```
+
