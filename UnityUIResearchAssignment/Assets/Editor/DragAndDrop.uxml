@@ -8,7 +8,7 @@
     <Style src="project://database/Assets/Editor/DragAndDrop.uss?fileID=7433441132597879392&amp;guid=5e6b98a09b0541042b557005fd6f3b69&amp;type=3#DragAndDrop" />
 	<ui:Label text="Hello World! From UXML" />
 	<ui:Label class="custom-label" text="Hello World! With Style" />
-    <ui:VisualElement name="draggable-item"class="draggable-item">
+    <ui:VisualElement name="draggable-item" class="draggable-item">
 	    <ui:Label text="test" />
     </ui:VisualElement>
 

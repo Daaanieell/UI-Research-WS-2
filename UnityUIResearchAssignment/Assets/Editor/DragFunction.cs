@@ -4,10 +4,12 @@ using UnityEngine.UIElements;
 public class DragFunction : PointerManipulator
 {
     private Vector3 originalPosition;
+    private VisualElement root;
 
     public DragFunction(VisualElement target)
     {
         this.target = target;
+        root = target.parent;
         originalPosition = target.transform.position;
     }
 
