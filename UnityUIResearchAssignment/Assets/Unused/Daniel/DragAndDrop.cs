@@ -7,7 +7,7 @@ public class DragAndDrop : EditorWindow
     [SerializeField]
     private VisualTreeAsset m_VisualTreeAsset = default;
 
-    [MenuItem("Window/UI Toolkit/DragAndDrop")]
+    [MenuItem("Tools/UI Toolkit/DragAndDrop")]
     public static void ShowExample()
     {
         DragAndDrop wnd = GetWindow<DragAndDrop>();
