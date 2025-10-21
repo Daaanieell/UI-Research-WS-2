@@ -1,4 +1,5 @@
 
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -30,6 +31,12 @@ public class WeaponGridMain : EditorWindow
         root.Add(uxmlContent);
 
         var grid = uxmlContent.Q<ScrollView>("grid");
-        grid.Add(Wg.FillWeaponGrid());
+        // grid.Add(Wg.FillWeaponGrid());
+
+        List<VisualElement> gridItems = Wg.FillWeaponGrid();
+        foreach (var item in gridItems)
+        {
+            grid.Add(item);
+        }
     }
 }
