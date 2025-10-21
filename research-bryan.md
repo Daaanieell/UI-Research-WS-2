@@ -1,75 +1,34 @@
-# How to implement a dropdown with editor UI? & How to implement a dropdown in editor UI for weapons?
+# How to implement a dropdown with editor UI & How to implement a dropdown in editor UI for weapons? (same question almost)
 
 ## Sources
 
 [Unity Manual DropdownField](https://docs.unity3d.com/6000.0/Documentation/Manual/UIE-uxml-element-DropdownField.html)
 
 ### Code from the link, changed, so it's weapons
-```
-var dropdown = new DropdownField(new List<string> { "AK-47", "Crossbow", "Dagger" }, 0);
 
-// Add another weapon
-dropdown.choices.Add("Tomahawk");
+For the EditorUI you need to create a folder specifically called **Editor**, the script created inside has to inherit from **Editor**.
+You will have to override a function _*'CreateInspectorGUI()'*_ inside this function you can create and return a VisualElement, which you have to instantiate first using the 'new' keyword.
+Inside the code block below you can see just that and afterwards there's a dropdownfield instantiated, filled with a few options and in the end added to the container and returned.
 
-// Register to the value changed callback.
-dropdown.RegisterValueChangedCallback(evt => Debug.Log(evt.newValue));
-
-// Style the dropdown.
-dropdown.style.width = 200;
-dropdown.style.height = 50;
-```
-
-It will need the namespace **UnityEngine.UIElements**
-
-<img width="390" height="281" alt="image" src="https://github.com/user-attachments/assets/e3ba15bc-4fc9-4dd7-ac62-100553e642f0" />
-
-*_Quick example I made with toolkit for EditorWindow_*
-
-```
-public class TestEditor : EditorWindow
-{
-    [MenuItem("Window/Dropdown Test")]
-    static void ShowWindow()
-    {
-        GetWindow<TestEditor>("Dropdown Test");
-    }
-    public void CreateGUI()
-    {
-        var dropdown = new DropdownField();
-        dropdown.choices = new List<string> {"Tomahawk", "AK-47", "Shotgun", "Idk any more guns"};
-        dropdown.value = "Tomahawk";
-
-        dropdown.style.width = 200;
-        dropdown.style.height = 50;
-        rootVisualElement.Add(dropdown);
-    }
-}
-```
-
----
-
-For the EditorUI you need to create a folder called **Editor**, inside you let the script inherit from **Editor**, you return a VisualElement and override the function CreateInspectorGUI(),  since it wants a VisualElement, you create one, in this case I added a DropdownField() to it and filled it with a few options. 
-
-You attach this script to a GameObject who inherits from a MonoBehaviour(al) script, the name of this script is also the name you reference in your EditorUI script, in this case it's testscript: (_[CustomEditor(typeof(testscript))]_)
-
+The script inside the **Editor** folder will be attached to a GameObject which has a MonoBehaviour script, the name of this script is also the name you reference in your EditorUI script, in this case it's 'TestScript'.(_[CustomEditor(typeof(testscript))]_)
 
 
 <img width="580" height="166" alt="image" src="https://github.com/user-attachments/assets/6901031b-e9b2-41de-91db-759f481bf622" />
 
-_Realised last example wasn't the EditorUI, this one is_ 
+---
 ```
-[CustomEditor(typeof(testscript))]
-public class EditorUiExample : Editor
+[CustomEditor(typeof(TestScript))]
+public class EditorUIExample : Editor
 {
 
     public override VisualElement CreateInspectorGUI()
     {
         var container = new VisualElement();
         var dropdown = new DropdownField();
-        dropdown.choices = new List<string> {"Tomahawk", "Shotty", "Glock"};
+        dropdown.choices = new List<string> {"Melee", "Ranged", "Magic"};
         
-        dropdown.choices.Add("Banana");
-        dropdown.value = "Tomahawk";
+        dropdown.choices.Add("Telepathically");
+        dropdown.value = "Melee";
 
         container.Add(dropdown);
         return container;
