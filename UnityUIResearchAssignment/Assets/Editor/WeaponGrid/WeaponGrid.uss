@@ -1,0 +1,17 @@
+.custom-label {
+    font-size: 20px;
+    -unity-font-style: bold;
+    color: rgb(68, 138, 255);
+}
+
+.grid {
+    background-color: red;
+    width: 500;
+    height: 500;
+}
+
+.grid-item {
+    background-color: green;
+    width: 50;
+    height: 50;
+}
