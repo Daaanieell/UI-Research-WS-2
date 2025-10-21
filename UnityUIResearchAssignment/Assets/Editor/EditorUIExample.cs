@@ -9,10 +9,10 @@ public class EditorUIExample : Editor
     {
         var container = new VisualElement();
         var dropdown = new DropdownField();
-        dropdown.choices = new List<string> { "Tomahawk", "Shotgun", "Glock" };
+        dropdown.choices = new List<string> { "Melee", "Ranged", "Magic" };
         
-        dropdown.choices.Add("Microphone");
-        dropdown.value = "Tomahawk";
+        dropdown.choices.Add("Telepathically");
+        dropdown.value = "Melee";
         
         container.Add(dropdown);
         return container;
