@@ -13,7 +13,9 @@ Inside the code block below you can see just that and afterwards there's a dropd
 The script inside the **Editor** folder will be attached to a GameObject which has a MonoBehaviour script, the name of this script is also the name you reference in your EditorUI script, in this case it's 'TestScript'.(_[CustomEditor(typeof(testscript))]_)
 
 
-<img width="580" height="166" alt="image" src="https://github.com/user-attachments/assets/6901031b-e9b2-41de-91db-759f481bf622" />
+
+<img width="720" height="640" alt="2025-10-21-043848_hyprshot" src="https://github.com/user-attachments/assets/ecd74340-bf4d-4f0f-80cc-feafefe61278" />
+
 
 ---
 ```
