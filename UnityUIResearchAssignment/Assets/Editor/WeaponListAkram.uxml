@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:VisualElement style="flex-grow: 1; padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px;">
+        <ui:Label text="Weapon Selector" name="WeaponSelector" />
+        <ui:DropdownField label="Weapon drop down" name="WeaponDropDown" />
+        <ui:ScrollView name="weaponGrid" style="height: 167px; flex-wrap: nowrap; -unity-background-image-tint-color: rgb(245, 245, 245);" />
+    </ui:VisualElement>
+</ui:UXML>
