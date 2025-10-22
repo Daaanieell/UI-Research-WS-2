@@ -22,21 +22,13 @@ public class WeaponGridMain : EditorWindow
         // Each editor window contains a root VisualElement object
         VisualElement root = rootVisualElement;
 
-        // VisualElements objects can contain other VisualElement following a tree hierarchy.
-        VisualElement label = new Label("Hello World! From C#");
-        root.Add(label);
-
         // Instantiate UXML
         VisualElement uxmlContent = m_VisualTreeAsset.Instantiate();
         root.Add(uxmlContent);
 
         var grid = uxmlContent.Q<ScrollView>("grid");
-        // grid.Add(Wg.FillWeaponGrid());
 
-        List<VisualElement> gridItems = Wg.FillWeaponGrid();
-        foreach (var item in gridItems)
-        {
-            grid.Add(item);
-        }
+        VisualElement gridItems = Wg.FillWeaponGrid();
+        grid.Add(gridItems);
     }
 }

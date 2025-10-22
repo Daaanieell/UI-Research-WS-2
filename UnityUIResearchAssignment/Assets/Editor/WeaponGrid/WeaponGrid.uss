@@ -5,25 +5,32 @@
 }
 
 .grid {
-    display: flex;
-    flex-direction: row;
-    /*flex-wrap: wrap;*/
-    background-color: red;
-    width: 500px;
-    height: 500px;
+    background-color: rgb(44,44,44);
+    border-radius: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
-.unity-scroll-voew__content-container {
+.unity-scroll-view__content-container {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    margin: auto;
+}
+
+.grid-row {
+    display: flex;
+    flex-direction: row;
 }
 
 .grid-item {
-    background-color: green;
-    width: 50px;
-    height: 50px;
-    margin: 5px;
+    background-color: rgb(77,77,77);
+    width: 80px;
+    height: 80px;
     align-items: center;
     justify-content: center;
+    margin: 5px;
+    border-radius: 10px;
 }
