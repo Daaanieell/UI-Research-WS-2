@@ -13,6 +13,8 @@ public class EditorUIExample : EditorWindow
 
     public void CreateGUI()
     {
+        VisualElement root = rootVisualElement;
+        
         // basically CSS styling, this could also be done in the UI-Builder I believe!
         var label = new Label("Weapon Selector");
         label.style.unityFontStyleAndWeight = FontStyle.Bold;
@@ -21,13 +23,11 @@ public class EditorUIExample : EditorWindow
         label.style.marginBottom = 5;
         label.style.marginTop = 5;
         label.style.unityTextAlign = TextAnchor.MiddleCenter;
+        root.Add(label);
         
         var dropdown = new DropdownField();
         dropdown.choices = new List<string> { "Melee", "Ranged", "Magic" };
         dropdown.value = "Melee";
-
-        // adding the created elements to the editor window to display them.
-        rootVisualElement.Add(label);
-        rootVisualElement.Add(dropdown);
+        root.Add(dropdown);
     }
 }
