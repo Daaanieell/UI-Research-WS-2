@@ -56,8 +56,12 @@ public class NPC : MonoBehaviour
         get => weaponSprite;
         set => weaponSprite = value;
     }
-
-    void EquipWeapon()
+    
+    public GameObject GetWeaponPrefab() => weaponPrefab;
+    
+    public void SetWeaponPrefab(GameObject prefab) => weaponPrefab = prefab;
+    
+    public void EquipWeapon()
     {
         if (handTransform == null || weaponPrefab == null)
             return;
