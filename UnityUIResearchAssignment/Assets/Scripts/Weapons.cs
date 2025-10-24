@@ -10,7 +10,7 @@ public class Weapon : ScriptableObject
     public GameObject weapon;
 }
 
-[SerializeField] enum WeaponType
+public enum WeaponType 
 {
     Melee,
     Magic,

@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class WeaponManager : MonoBehaviour
 {
-    public Weapon weapon;
+    [SerializeField] Weapon weapon;
 
     private Text _weaponName;
     private int _damage;
@@ -15,8 +15,4 @@ public class WeaponManager : MonoBehaviour
     public int Damage  { get; set; }
     public float AttackSpeed { get; set; }
     public Sprite WeaponSprite { get; set; }
-    void Start()
-    {
-        Debug.Log(weapon.attackSpeed);
-    }
 }
