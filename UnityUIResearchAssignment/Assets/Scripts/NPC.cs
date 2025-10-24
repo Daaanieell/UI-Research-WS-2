@@ -3,9 +3,10 @@ using UnityEngine;
 
 public class NPC : MonoBehaviour
 {
-    //private string name;
-    //private int health;
-    //private int maxHealth;
+    [SerializeField] private string name;
+    [SerializeField] private int health;
+    [SerializeField] private int maxHealth;
+    
     private string weaponType;
     private Sprite weaponSprite;
 
@@ -24,6 +25,36 @@ public class NPC : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public string Name
+    {
+        get => name;
+        set => name = value;
+    }
+
+    public int Health
+    {
+        get => health;
+        set => health = value;
+    }
+
+    public int MaxHealth
+    {
+        get => maxHealth;
+        set => maxHealth = value;
+    }
+
+    public string WeaponType
+    {
+        get => weaponType;
+        set => weaponType = value;
+    }
+
+    public Sprite WeaponSprite
+    {
+        get => weaponSprite;
+        set => weaponSprite = value;
     }
 
     void EquipWeapon()

@@ -1,0 +1,29 @@
+:root {
+}
+
+.unity-progress-bar__background {
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 2px;
+}
+
+.unity-progress-bar {
+}
+
+.unity-progress-bar__container {
+}
+
+.unity-progress-bar__progress {
+    background-color: #00ff00; /* Start: Grün */
+    border-radius: 2px;
+}
+
+.unity-progress-bar__title {
+}
+
+.name-label {
+    color: black;
+    font-size: 10px;
+    -unity-text-align: middle-center;
+    margin-bottom: 2px;
+    text-shadow: 0 0 2px black;
+}

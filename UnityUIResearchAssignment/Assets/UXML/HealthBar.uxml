@@ -1,0 +1,7 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/USS/HealthBar.uss?fileID=7433441132597879392&amp;guid=8ae6818d7f381334e81044f406fea379&amp;type=3#HealthBar" />
+    <ui:VisualElement class="healthbar-root" style="height: 223px; width: 324px;">
+        <ui:Label name="nameLabel" text="NAME" class="name-label" style="color: rgb(0, 0, 0); -unity-text-align: upper-center; width: auto; align-self: auto;" />
+        <ui:ProgressBar name="healthBar" value="100" high-value="100" style="flex-basis: auto; width: auto; align-self: auto;" />
+    </ui:VisualElement>
+</ui:UXML>
