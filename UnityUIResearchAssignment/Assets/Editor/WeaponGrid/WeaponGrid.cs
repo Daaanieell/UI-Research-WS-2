@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using Unity.VisualScripting;
 using Unity.VisualScripting.Dependencies.NCalc;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -7,25 +9,25 @@ public class WeaponGrid
 {
     private int maxRows = 5;
     private int maxColumns = 3;
-
-    private int testAmountOfItems = 32;
-
     private int count;
-    List<int> weaponPlaceholder = new List<int>();
-    
-    //TODO: needs parameters for List<Weapon>
-    public VisualElement FillWeaponGrid()
+
+    public VisualElement FillWeaponGrid(List<Weapon> weapons)
     {
-        //test
-        for (int i = 1; i <= testAmountOfItems; i++)
+        if (weapons == null)
         {
-            weaponPlaceholder.Add(i);
+            Debug.LogWarning("weapons is null");
+            return null;
         }
-        
+
+        if (weapons.Count <= 0)
+        {
+            return ShowNoWeaponMessage();
+        }
+
         VisualElement gridContainer = new VisualElement();
         gridContainer.AddToClassList("weapon-grid");
 
-        for (int row = 0; row < weaponPlaceholder.Count; row++)
+        for (int row = 0; row < weapons.Count; row++)
         {
             VisualElement rowElement = new VisualElement();
             rowElement.AddToClassList("grid-row");
@@ -33,25 +35,11 @@ public class WeaponGrid
             for (int col = 0; col < maxColumns; col++)
             {
                 count++;
-                if (count > weaponPlaceholder.Count) break;
-                
+                if (count > weapons.Count) break;
                 int itemNumber = count;
-                VisualElement item = new VisualElement();
-                item.AddToClassList("grid-item");
-                
-                // TODO: WeaponManager passes sprite to this, make sure to load it!!!
-                
-                item.AddManipulator(new Clickable(() =>
-                {
-                    //TODO: this needs logic for equipping a weapon on an NPC
-                    //  maybe returning the weapon SO?
-                    Debug.Log("clicked number: " + itemNumber + " placeholder number: " + weaponPlaceholder[itemNumber-1]);
+                var currentWeapon = weapons[itemNumber - 1];
 
-                }));
-
-                VisualElement name = new Label("itemName: " + count.ToString());
-                item.Add(name);
-
+                VisualElement item = GenerateItemElement(currentWeapon, itemNumber);
                 rowElement.Add(item);
             }
 
@@ -59,5 +47,47 @@ public class WeaponGrid
         }
 
         return gridContainer;
+    }
+
+    private VisualElement GenerateItemElement(Weapon currentWeapon, int index)
+    {
+        VisualElement item = new VisualElement();
+        item.AddToClassList("grid-item");
+
+
+        item.AddManipulator(new Clickable(() =>
+        {
+            Debug.Log("clicked on: " + currentWeapon.weaponName);
+            //TODO: add function here for equipping a weapon!
+        }));
+
+        Texture2D preview = AssetPreview.GetAssetPreview(currentWeapon.weapon);
+        if (preview == null)
+        {
+            preview = AssetPreview.GetMiniThumbnail(currentWeapon.weapon);
+        }
+
+        var image = new Image();
+        image.image = preview;
+
+        VisualElement name = new Label("" + currentWeapon.weaponName);
+        item.Add(image);
+        item.Add(name);
+
+        return item;
+    }
+
+    private VisualElement ShowNoWeaponMessage()
+    {
+        Debug.Log("no weapons found");
+        VisualElement warningContainer = new VisualElement();
+        warningContainer.AddToClassList("warning-container");
+
+        VisualElement warning = new Label("No weapons found");
+        warning.AddToClassList("no-weapon-warning");
+
+        warningContainer.Add(warning);
+
+        return warningContainer;
     }
 }
