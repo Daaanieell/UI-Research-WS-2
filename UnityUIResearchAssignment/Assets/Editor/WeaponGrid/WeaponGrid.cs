@@ -38,6 +38,9 @@ public class WeaponGrid
                 int itemNumber = count;
                 VisualElement item = new VisualElement();
                 item.AddToClassList("grid-item");
+                
+                // TODO: WeaponManager passes sprite to this, make sure to load it!!!
+                
                 item.AddManipulator(new Clickable(() =>
                 {
                     //TODO: this needs logic for equipping a weapon on an NPC
