@@ -61,10 +61,10 @@ public class WeaponGrid
             //TODO: add function here for equipping a weapon!
         }));
 
-        Texture2D preview = AssetPreview.GetAssetPreview(currentWeapon.weapon);
+        Texture2D preview = AssetPreview.GetAssetPreview(currentWeapon.weaponPrefab);
         if (preview == null)
         {
-            preview = AssetPreview.GetMiniThumbnail(currentWeapon.weapon);
+            preview = AssetPreview.GetMiniThumbnail(currentWeapon.weaponPrefab);
         }
 
         var image = new Image();

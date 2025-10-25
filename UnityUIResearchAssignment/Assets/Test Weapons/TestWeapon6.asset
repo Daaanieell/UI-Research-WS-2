@@ -10,9 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: be4da936663440ef3a76a6803e4a913b, type: 3}
-  m_Name: Weapons
-  m_EditorClassIdentifier: Assembly-CSharp::Weapons
-  weaponName: 
+  m_Name: TestWeapon6
+  m_EditorClassIdentifier: Assembly-CSharp::Weapon
+  weaponName: TestWeapon6
   damage: 0
   attackSpeed: 0
   weaponSprite: {fileID: 0}
+  weaponPrefab: {fileID: 5095749450077282982, guid: d1b701d38aae53040ba2e3943951f008, type: 3}
+  weaponType: 1
