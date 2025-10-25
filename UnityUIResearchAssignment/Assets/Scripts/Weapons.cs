@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [CreateAssetMenu(fileName = "Weapons", menuName = "Weapons")]
 public class Weapon : ScriptableObject
@@ -7,7 +8,8 @@ public class Weapon : ScriptableObject
     public int damage;
     public float attackSpeed;
     public Sprite weaponSprite;
-    public GameObject weapon;
+    [FormerlySerializedAs("weapon")] public GameObject weaponPrefab;
+    public WeaponType weaponType;
 }
 
 public enum WeaponType 
