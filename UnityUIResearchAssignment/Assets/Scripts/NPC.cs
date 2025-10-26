@@ -1,79 +1,88 @@
-using System;
 using UnityEngine;
 
+[ExecuteAlways]
 public class NPC : MonoBehaviour
 {
-    [SerializeField] private string name;
+    [Header("Stats")]
+    [SerializeField] private string npcName;
     [SerializeField] private int health;
     [SerializeField] private int maxHealth;
-    
-    private string weaponType;
-    private Sprite weaponSprite;
 
+    [Header("Weapon")]
     [SerializeField] private Transform handTransform;
     [SerializeField] private GameObject weaponPrefab;
 
     private GameObject currentWeapon;
-    
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        EquipWeapon();
-    }
+    private GameObject lastWeaponPrefab;
+    private bool needsRefresh;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public string Name { get => npcName; set => npcName = value; }
+    public int Health { get => health; set => health = value; }
+    public int MaxHealth { get => maxHealth; set => maxHealth = value; }
 
-    public string Name
-    {
-        get => name;
-        set => name = value;
-    }
-
-    public int Health
-    {
-        get => health;
-        set => health = value;
-    }
-
-    public int MaxHealth
-    {
-        get => maxHealth;
-        set => maxHealth = value;
-    }
-
-    public string WeaponType
-    {
-        get => weaponType;
-        set => weaponType = value;
-    }
-
-    public Sprite WeaponSprite
-    {
-        get => weaponSprite;
-        set => weaponSprite = value;
-    }
-    
     public GameObject GetWeaponPrefab() => weaponPrefab;
-    
-    public void SetWeaponPrefab(GameObject prefab) => weaponPrefab = prefab;
-    
-    public void EquipWeapon()
+    public void SetWeaponPrefab(GameObject prefab)
     {
-        if (handTransform == null || weaponPrefab == null)
+        if (weaponPrefab != prefab)
+        {
+            weaponPrefab = prefab;
+            needsRefresh = true;
+        }
+    }
+
+    private void OnEnable()
+    {
+        lastWeaponPrefab = weaponPrefab;
+        RefreshWeapon();
+    }
+
+    private void OnValidate()
+    {
+        if (weaponPrefab != lastWeaponPrefab)
+        {
+            lastWeaponPrefab = weaponPrefab;
+            needsRefresh = true;
+        }
+    }
+
+    private void Update()
+    {
+        if (needsRefresh)
+        {
+            RefreshWeapon();
+            needsRefresh = false;
+        }
+
+        if (!Application.isPlaying && currentWeapon != null && handTransform != null)
+        {
+            currentWeapon.transform.position = handTransform.position;
+            currentWeapon.transform.rotation = handTransform.rotation;
+        }
+    }
+
+    public void RefreshWeapon()
+    {
+        if (handTransform == null)
             return;
 
-        if (currentWeapon != null)
+        for (int i = handTransform.childCount - 1; i >= 0; i--)
         {
-            Destroy(currentWeapon);
+            var child = handTransform.GetChild(i).gameObject;
+            DestroyImmediate(child);
+        }
+
+        if (weaponPrefab == null)
+        {
+            currentWeapon = null;
+            return;
         }
 
         currentWeapon = Instantiate(weaponPrefab, handTransform);
+        currentWeapon.name = weaponPrefab.name + " (Equipped)";
         currentWeapon.transform.localPosition = Vector3.zero;
         currentWeapon.transform.localRotation = Quaternion.identity;
         currentWeapon.transform.localScale = Vector3.one * 5f;
+        currentWeapon.hideFlags = HideFlags.DontSave;
+        lastWeaponPrefab = weaponPrefab;
     }
 }

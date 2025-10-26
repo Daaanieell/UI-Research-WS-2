@@ -1,47 +1,97 @@
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 
+[ExecuteAlways]
 public class HealthBarUI : MonoBehaviour
 {
-    //public Transform target;
-    //public Vector3 offset = new Vector3(0, 2f, 0);
-    //public float maxHealth = 100f;
-    //public float currentHealth = 100f;
-    //public string displayName = "NPC";
+    [Header("Target NPC")]
+    [SerializeField] private NPC npcTarget;
+    [SerializeField] private Vector3 offset = new Vector3(0, 2f, 0);
 
-    public NPC npcTarget;
-    public Vector3 offset = new Vector3(0, 2f, 0);
-    
+    private UIDocument uiDoc;
     private ProgressBar healthBar;
     private Label nameLabel;
+    private VisualElement progressFill;
     private Camera mainCam;
 
-    void Awake()
+    private float lastHealth;
+    private float lastMaxHealth;
+    private string lastName;
+
+    private void OnEnable()
     {
-        var doc = GetComponent<UIDocument>();
-        var root = doc.rootVisualElement;
-
-        healthBar = root.Q<ProgressBar>("healthBar");
-        nameLabel = root.Q<Label>("nameLabel");
-
-        //nameLabel.text = displayName;
-        mainCam = Camera.main;
+        Initialize();
     }
 
-    void LateUpdate()
+    private void Initialize()
     {
-        if (npcTarget == null || npcTarget.transform == null)
-            return;
-        
-        transform.position = npcTarget.transform.position + offset; 
-        transform.rotation = Quaternion.Euler(0, mainCam.transform.eulerAngles.y, 0);
-        
-        healthBar.highValue = npcTarget.MaxHealth;
-        healthBar.value = npcTarget.Health;
-        nameLabel.text = npcTarget.Name;
+        uiDoc = GetComponent<UIDocument>();
 
-        float t = Mathf.Clamp01(npcTarget.Health / npcTarget.MaxHealth);
-        Color barColor = Color.Lerp(Color.red, Color.green, t);
-        healthBar.Q(null, "unity-progress-bar__progress").style.backgroundColor = new StyleColor(barColor);
+        var root = uiDoc.rootVisualElement;
+        healthBar = root.Q<ProgressBar>("healthBar");
+        nameLabel = root.Q<Label>("nameLabel");
+        progressFill = healthBar?.Q(className: "unity-progress-bar__progress");
+        mainCam = Camera.main;
+
+        UpdateUI(force:true);
+    }
+
+    private void LateUpdate()
+    {
+        if (npcTarget == null || uiDoc == null)
+            return;
+
+        if (mainCam == null)
+            mainCam = Camera.main;
+
+        if (mainCam != null)
+        {
+            transform.position = npcTarget.transform.position + offset;
+            transform.rotation = Quaternion.Euler(0, mainCam.transform.eulerAngles.y, 0);
+        }
+
+        bool changed = npcTarget.Health != lastHealth ||
+                       npcTarget.MaxHealth != lastMaxHealth ||
+                       npcTarget.Name != lastName;
+
+        if (changed)
+            UpdateUI(force: false);
+    }
+
+    private void UpdateUI(bool force)
+    {
+        if (healthBar == null || nameLabel == null || npcTarget == null)
+            return;
+
+        float maxHealth = Mathf.Max(1, npcTarget.MaxHealth);
+        float currentHealth = Mathf.Clamp(npcTarget.Health, 0, maxHealth);
+        float ratio = currentHealth / maxHealth;
+
+        nameLabel.text = npcTarget.Name;
+        healthBar.highValue = maxHealth;
+        healthBar.value = currentHealth;
+
+        if (progressFill != null)
+        {
+            Color barColor = Color.Lerp(Color.red, Color.green, ratio);
+            progressFill.style.backgroundColor = new StyleColor(barColor);
+        }
+
+        lastHealth = currentHealth;
+        lastMaxHealth = maxHealth;
+        lastName = npcTarget.Name;
+
+        if (!Application.isPlaying)
+        {
+            EditorApplication.QueuePlayerLoopUpdate();
+            SceneView.RepaintAll();
+        }
+        
+    }
+
+    public void RefreshFromEditor()
+    {
+        UpdateUI(force: true);
     }
 }

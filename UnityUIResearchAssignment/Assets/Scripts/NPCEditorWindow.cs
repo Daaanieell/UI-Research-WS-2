@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEditor;
-using UnityEditor.Search;
+using UnityEditor.SceneManagement;
+using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -13,27 +14,26 @@ public class NPCEditorWindow : EditorWindow
     private IntegerField maxHealthField;
     private SliderInt healthSlider;
     private PopupField<string> weaponPopup;
+
     private List<GameObject> weaponPrefabs;
-    private Button equipButton;
+    private List<string> weaponNames;
 
     [MenuItem("Tools/NPC Editor")]
     public static void ShowWindow()
     {
         var window = GetWindow<NPCEditorWindow>();
         window.titleContent = new GUIContent("NPC Editor");
-        window.minSize = new Vector2(250, 200);
+        window.minSize = new Vector2(280, 240);
     }
 
     public void CreateGUI()
     {
-        
         var root = rootVisualElement;
         root.style.paddingLeft = 10;
         root.style.paddingRight = 10;
         root.style.paddingTop = 10;
 
-        npcField = new ObjectField("Select NPC");
-        npcField.objectType = typeof(NPC);
+        npcField = new ObjectField("Select NPC") { objectType = typeof(NPC) };
         npcField.RegisterValueChangedCallback(evt =>
         {
             selectedNPC = evt.newValue as NPC;
@@ -44,37 +44,80 @@ public class NPCEditorWindow : EditorWindow
         nameField = new TextField("Name");
         nameField.RegisterValueChangedCallback(evt =>
         {
-            if (selectedNPC != null)
-                selectedNPC.Name = evt.newValue;
+            if (selectedNPC == null) return;
+            selectedNPC.Name = evt.newValue;
+            RefreshHealthBarAndScene();
         });
         root.Add(nameField);
 
         healthField = new IntegerField("Health");
+        healthField.isDelayed = false; // direktes Feedback
         healthField.RegisterValueChangedCallback(evt =>
         {
-            if (selectedNPC != null)
-                selectedNPC.Health = evt.newValue;
+            if (selectedNPC == null) return;
+            selectedNPC.Health = Mathf.Clamp(evt.newValue, 0, selectedNPC.MaxHealth);
+            healthSlider.SetValueWithoutNotify(selectedNPC.Health);
+            RefreshHealthBarAndScene();
         });
         root.Add(healthField);
 
         maxHealthField = new IntegerField("Max Health");
         maxHealthField.RegisterValueChangedCallback(evt =>
         {
-            if (selectedNPC != null)
-                selectedNPC.MaxHealth = evt.newValue;
+            if (selectedNPC == null) return;
+            selectedNPC.MaxHealth = Mathf.Max(1, evt.newValue);
+            selectedNPC.Health = Mathf.Clamp(selectedNPC.Health, 0, selectedNPC.MaxHealth);
+
+            healthSlider.highValue = selectedNPC.MaxHealth;
+            healthSlider.SetValueWithoutNotify(selectedNPC.Health);
+            healthField.SetValueWithoutNotify(selectedNPC.Health);
+
+            RefreshHealthBarAndScene();
         });
         root.Add(maxHealthField);
 
-        healthSlider = new SliderInt(0, 100) { label = "Health Slider" };
+        healthSlider = new SliderInt("Health Slider", 0, 100) { showInputField = true };
         healthSlider.RegisterValueChangedCallback(evt =>
         {
-            if (selectedNPC != null)
-                selectedNPC.Health = evt.newValue;
+            if (selectedNPC == null) return;
+
+            selectedNPC.Health = Mathf.Clamp(evt.newValue, 0, selectedNPC.MaxHealth);
+            healthField.SetValueWithoutNotify(selectedNPC.Health);
+            RefreshHealthBarAndScene();
+        });
+
+        healthSlider.RegisterCallback<PointerMoveEvent>(_ =>
+        {
+            if (selectedNPC == null) return;
+            selectedNPC.Health = healthSlider.value;
+            RefreshHealthBarAndScene();
         });
         root.Add(healthSlider);
 
+        LoadWeaponPrefabs();
+        weaponPopup = new PopupField<string>("Weapon", weaponNames, weaponNames.Count > 0 ? 0 : -1);
+        weaponPopup.RegisterValueChangedCallback(evt =>
+        {
+            if (selectedNPC == null) return;
+
+            int index = weaponNames.IndexOf(evt.newValue);
+            if (index >= 0 && index < weaponPrefabs.Count)
+            {
+                GameObject prefab = weaponPrefabs[index];
+                selectedNPC.SetWeaponPrefab(prefab);
+                selectedNPC.RefreshWeapon();
+                RefreshHealthBarAndScene();
+            }
+        });
+        root.Add(weaponPopup);
+
+        RefreshFields();
+    }
+
+    private void LoadWeaponPrefabs()
+    {
         weaponPrefabs = new List<GameObject>();
-        var weaponNames = new List<string>();
+        weaponNames = new List<string>();
 
         string[] guids = AssetDatabase.FindAssets("t:GameObject", new[] { "Assets/Prefabs" });
         foreach (string guid in guids)
@@ -87,26 +130,6 @@ public class NPCEditorWindow : EditorWindow
                 weaponNames.Add(prefab.name);
             }
         }
-
-        weaponPopup = new PopupField<string>("Weapon", weaponNames, 0);
-        weaponPopup.RegisterValueChangedCallback(evt =>
-        {
-            if (selectedNPC == null)
-                return;
-
-            int index = weaponNames.IndexOf(evt.newValue);
-            if (index >= 0 && index < weaponPrefabs.Count)
-            {
-                var selectedPrefab = weaponPrefabs[index];
-                selectedNPC.SetWeaponPrefab(selectedPrefab);
-
-                if (Application.isPlaying)
-                    selectedNPC.EquipWeapon();
-                else
-                    EditorUtility.SetDirty(selectedNPC);
-            }
-        });
-        root.Add(weaponPopup);
     }
 
     private void RefreshFields()
@@ -119,7 +142,6 @@ public class NPCEditorWindow : EditorWindow
         maxHealthField.SetValueWithoutNotify(selectedNPC.MaxHealth);
         healthSlider.highValue = selectedNPC.MaxHealth;
         healthSlider.SetValueWithoutNotify(selectedNPC.Health);
-
     }
 
     private void OnInspectorUpdate()
@@ -132,5 +154,20 @@ public class NPCEditorWindow : EditorWindow
             healthSlider.highValue = selectedNPC.MaxHealth;
             healthSlider.SetValueWithoutNotify(selectedNPC.Health);
         }
+    }
+
+    private void RefreshHealthBarAndScene()
+    {
+        if (selectedNPC != null)
+        {
+            if (selectedNPC.TryGetComponent<HealthBarUI>(out var hb))
+                hb.RefreshFromEditor();
+
+            EditorUtility.SetDirty(selectedNPC);
+            EditorSceneManager.MarkSceneDirty(selectedNPC.gameObject.scene);
+        }
+
+        SceneView.RepaintAll();
+        Repaint();
     }
 }
