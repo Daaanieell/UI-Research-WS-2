@@ -611,7 +611,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7909888326818675219, guid: 08a59c7c5c759d045ac19b93f17e0a61, type: 3}
       propertyPath: health
-      value: 37
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 7909888326818675219, guid: 08a59c7c5c759d045ac19b93f17e0a61, type: 3}
       propertyPath: npcName
@@ -624,7 +624,7 @@ PrefabInstance:
     - target: {fileID: 7909888326818675219, guid: 08a59c7c5c759d045ac19b93f17e0a61, type: 3}
       propertyPath: weaponPrefab
       value: 
-      objectReference: {fileID: 4211769875248118758, guid: ca3fd6da2f6f43443948168994194341, type: 3}
+      objectReference: {fileID: 8569003258840614191, guid: c7f9c7f57c91f704f80129c2cf0312a2, type: 3}
     - target: {fileID: 7963469214483259026, guid: 08a59c7c5c759d045ac19b93f17e0a61, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.11
