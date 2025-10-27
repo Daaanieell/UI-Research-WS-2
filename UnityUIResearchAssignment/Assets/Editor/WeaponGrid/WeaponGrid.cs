@@ -11,6 +11,8 @@ public class WeaponGrid
     private int maxColumns = 3;
     private int count;
 
+    private NPC selectedNPC;
+
     public VisualElement FillWeaponGrid(List<Weapon> weapons)
     {
         if (weapons == null)
@@ -59,6 +61,8 @@ public class WeaponGrid
         {
             Debug.Log("clicked on: " + currentWeapon.weaponName);
             //TODO: add function here for equipping a weapon!
+            selectedNPC.SetWeaponPrefab(currentWeapon.weaponPrefab);
+            selectedNPC.RefreshWeapon();
         }));
 
         Texture2D preview = AssetPreview.GetAssetPreview(currentWeapon.weaponPrefab);
@@ -89,5 +93,10 @@ public class WeaponGrid
         warningContainer.Add(warning);
 
         return warningContainer;
+    }
+
+    public void SetSelectedNPC(NPC npc)
+    {
+        selectedNPC = npc;
     }
 }
