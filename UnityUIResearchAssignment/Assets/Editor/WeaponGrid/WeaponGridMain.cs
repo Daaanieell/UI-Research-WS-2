@@ -11,8 +11,8 @@ public class WeaponGridMain : EditorWindow
     [SerializeField] private VisualTreeAsset m_VisualTreeAsset = default;
 
 
+    //TODO: (weapon equipping) these fields should be in another file
     private ObjectField npcField;
-
     private NPC selectedNPC;
 
     private WeaponGrid Wg = new WeaponGrid();
@@ -59,6 +59,8 @@ public class WeaponGridMain : EditorWindow
 
         // Wg.SetWeapons(allWeapons);
 
+
+        //TODO: (weapon equipping) this is used for selecting the npc, should be in another fiel
         npcField = new ObjectField("Select NPC") { objectType = typeof(NPC) };
         npcField.RegisterValueChangedCallback(evt =>
         {

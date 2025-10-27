@@ -11,6 +11,8 @@ public class WeaponGrid
     private int maxColumns = 3;
     private int count;
 
+
+    //TODO: (weapon equipping) this logic for selecting/equipping items should be in another file
     private NPC selectedNPC;
 
     public VisualElement FillWeaponGrid(List<Weapon> weapons)
@@ -60,7 +62,8 @@ public class WeaponGrid
         item.AddManipulator(new Clickable(() =>
         {
             Debug.Log("clicked on: " + currentWeapon.weaponName);
-            //TODO: add function here for equipping a weapon!
+            
+            //TODO: (weapon equipping) this logic should be in another file
             selectedNPC.SetWeaponPrefab(currentWeapon.weaponPrefab);
             selectedNPC.RefreshWeapon();
         }));
@@ -95,6 +98,7 @@ public class WeaponGrid
         return warningContainer;
     }
 
+    //TODO: (weapon equipping) this logic for selecting/equipping items should be in another file
     public void SetSelectedNPC(NPC npc)
     {
         selectedNPC = npc;
