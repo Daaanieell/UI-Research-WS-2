@@ -26,14 +26,14 @@ public class WeaponGrid {
 
 			//columns
 			for (column < maxColumns) {
-			VisualElement item = new VisualElement();
-
-           item.OnClick(() => {
-			    //this is an OnClick event for each item
-               //add logic here for selecting/equipping a weapon
-           })
-
-			rowContainer.Add(item)
+				VisualElement item = new VisualElement();
+	
+			    item.OnClick(() => {
+			 		//this is an OnClick event for each item
+		   			//add logic here for selecting/equipping a weapon
+				})
+	
+				rowContainer.Add(item)
 			}
 
 			gridContainer.Add(rowContainer)
