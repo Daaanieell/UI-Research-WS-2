@@ -8,6 +8,7 @@ using UnityEngine.UIElements;
 public class WeaponGridMain : EditorWindow
 {
     [SerializeField] private VisualTreeAsset m_VisualTreeAsset = default;
+    DropdownField typeDropdown;
 
     private WeaponGrid Wg = new WeaponGrid();
     
@@ -48,12 +49,21 @@ public class WeaponGridMain : EditorWindow
         // Instantiate UXML
         VisualElement uxmlContent = m_VisualTreeAsset.Instantiate();
         root.Add(uxmlContent);
-
+        typeDropdown = uxmlContent.Q<DropdownField>("WeaponDropDown");
         var grid = uxmlContent.Q<ScrollView>("grid");
         
+        typeDropdown.choices = new List<string> { "All", "Melee", "Ranged", "Magic" };
+        typeDropdown.value = "All";
         // Wg.SetWeapons(allWeapons);
+        typeDropdown.RegisterValueChangedCallback(evt =>
+        {
+            grid.Clear();            // remove old grid
+            VisualElement updatedGrid = Wg.FillWeaponGrid(allWeapons, typeDropdown);
+            grid.Add(updatedGrid);
 
-        VisualElement gridItems = Wg.FillWeaponGrid(allWeapons);
-        grid.Add(gridItems);
+        });
+        grid.Clear();
+        grid.Add(Wg.FillWeaponGrid(allWeapons, typeDropdown));
     }
+    
 }
