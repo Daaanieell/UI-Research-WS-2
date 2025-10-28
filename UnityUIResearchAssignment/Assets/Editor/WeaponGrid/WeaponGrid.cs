@@ -11,33 +11,28 @@ public class WeaponGrid
     private int maxColumns = 3;
     private int count;
 
-    public VisualElement FillWeaponGrid(List<Weapon> weapons)
+    public VisualElement FillWeaponGrid(List<Weapon> weapons,DropdownField typeDropdown)
     {
-        if (weapons == null)
-        {
-            Debug.LogWarning("weapons is null");
-            return null;
-        }
+        List<Weapon> filteredWeapons = filterWeaponType(weapons,typeDropdown);
 
-        if (weapons.Count <= 0)
-        {
-            return ShowNoWeaponMessage();
-        }
-
+        if (weapons == null || weapons.Count == 0) return ShowNoWeaponMessage();
+        if (filteredWeapons.Count == 0) return ShowNoWeaponMessage();
+        
         VisualElement gridContainer = new VisualElement();
         gridContainer.AddToClassList("weapon-grid");
 
-        for (int row = 0; row < weapons.Count; row++)
+        for (int row = 0; row < filteredWeapons.Count; row++)
         {
             VisualElement rowElement = new VisualElement();
             rowElement.AddToClassList("grid-row");
 
             for (int col = 0; col < maxColumns; col++)
             {
+
                 count++;
-                if (count > weapons.Count) break;
+                if (count > filteredWeapons.Count) break;
                 int itemNumber = count;
-                var currentWeapon = weapons[itemNumber - 1];
+                var currentWeapon = filteredWeapons[itemNumber - 1];
 
                 VisualElement item = GenerateItemElement(currentWeapon, itemNumber);
                 rowElement.Add(item);
@@ -90,4 +85,15 @@ public class WeaponGrid
 
         return warningContainer;
     }
+
+    private List<Weapon> filterWeaponType(List<Weapon> weapons, DropdownField selectedWeaponType)
+    {       
+        count = 0;
+        var filteredWeapons = weapons;
+        if (selectedWeaponType.value != "All")
+            filteredWeapons = weapons.FindAll(w => w.weaponType.ToString() == selectedWeaponType.value);
+
+        return filteredWeapons;
+    }
+    
 }
