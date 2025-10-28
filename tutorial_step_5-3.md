@@ -53,9 +53,9 @@ public class WeaponGrid {
   ```
 
 - Now use the `LoadWeapons()` function from the WeaponLoader.cs to get all the weapons and add them to the list.
-- Using parameters, have each item in the grid contain an image and the name of the weapon.
+- Using parameters, pass the list to the `GridMaker()` function and have each item in the grid contain an image and the name of the weapon.
   > Note: images can be loaded using the `loadImageForWeapon()` function
-- To add text and images to a VisualElement, you can create a new VisualElement and then add it to another using the `Add(VisualElement)`.
+- To add text and images to a VisualElement, you can create a new VisualElement in your C# script and then add it to another using the `VisualElement.Add(VisualElement)`.
 
 You should now have a weapon grid that dynamically loads weapons.
 
