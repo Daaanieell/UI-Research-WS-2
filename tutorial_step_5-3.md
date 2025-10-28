@@ -66,7 +66,6 @@ USS Styling is similar to CSS, but be aware it lacks some modern features.
 WeaponGrid.cs:
 
 - For each VisualElement that is created, use the AddToClassList(".my-class") function to add a class to the VisualElement. e.g.: `grid-container`, `grid-row`, and `grid-item`.
-- Give each VisualElement it's own class.
 
 USS file:
 
@@ -74,13 +73,13 @@ USS file:
 - Give each class a different `background-color` to see differentiate between each VisualElement in the UI.
 - Give each class a fitting `margin` property
 - Use the CSS selectors to style the image within the items, e.g.:
-    ```CSS
-    .grid-item > .unity-image {
-        <!-- this will style the labels within the item -->
-    }
-    ```
-- Give the image within an item the property:  `position: absolute;` and other appropriate size properties.
-
+  ```CSS
+  .grid-item > .unity-image {
+      <!-- this will style the labels within the item -->
+  }
+  ```
+- Give the image within an item the property: `position: absolute;` and other appropriate size properties.
 
 #### Selecting and equipping a weapon
+
 > WIP, implementation might change
