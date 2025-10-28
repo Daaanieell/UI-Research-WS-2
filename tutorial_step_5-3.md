@@ -83,3 +83,9 @@ USS file:
 #### Selecting and equipping a weapon
 
 > WIP, implementation might change
+
+
+Your weapongrid is now finished and should look like this:
+
+<img width="409" height="861" alt="image" src="https://github.com/user-attachments/assets/b88a789a-a287-4766-af24-18459d3ce974" />
+
