@@ -10,7 +10,7 @@ It currently lacks:
 2. Styling (use the .USS file)
 3. Ability to select/equip a weapon
 
-Pseudo code
+**Pseudo code overview**
 
 ```C#
 //WeaponGrid.cs
@@ -78,12 +78,12 @@ USS file:
       <!-- this will style the labels within the item -->
   }
   ```
+
 - Give the image within an item the property: `position: absolute;` and other appropriate size properties.
 
 #### Selecting and equipping a weapon
 
 > WIP, implementation might change
-
 
 Your weapongrid is now finished and should look like this:
 
