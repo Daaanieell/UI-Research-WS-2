@@ -81,7 +81,7 @@ public class NPC : MonoBehaviour
         currentWeapon.name = weaponPrefab.name + " (Equipped)";
         currentWeapon.transform.localPosition = Vector3.zero;
         currentWeapon.transform.localRotation = Quaternion.identity;
-        currentWeapon.transform.localScale = Vector3.one * 5f;
+        currentWeapon.transform.localScale = Vector3.one;
         currentWeapon.hideFlags = HideFlags.DontSave;
         lastWeaponPrefab = weaponPrefab;
     }
