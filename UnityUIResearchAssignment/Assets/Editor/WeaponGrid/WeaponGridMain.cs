@@ -9,13 +9,9 @@ using UnityEngine.UIElements;
 public class WeaponGridMain : EditorWindow
 {
     [SerializeField] private VisualTreeAsset m_VisualTreeAsset = default;
-
-
-    //TODO: (weapon equipping) these fields should be in another file
     private ObjectField npcField;
-    private NPC selectedNPC;
-
-    private WeaponGrid Wg = new WeaponGrid();
+    private NPCHelper npcHelper;
+    private WeaponGrid Wg;
 
     [SerializeField] private List<GameObject> weapons;
 
@@ -48,6 +44,9 @@ public class WeaponGridMain : EditorWindow
     {
         LoadAllWeapons();
 
+        npcHelper = new NPCHelper();
+        Wg = new WeaponGrid(npcHelper);
+
         // Each editor window contains a root VisualElement object
         VisualElement root = rootVisualElement;
 
@@ -57,17 +56,7 @@ public class WeaponGridMain : EditorWindow
 
         var grid = uxmlContent.Q<ScrollView>("grid");
 
-        // Wg.SetWeapons(allWeapons);
-
-
-        //TODO: (weapon equipping) this is used for selecting the npc, should be in another fiel
-        npcField = new ObjectField("Select NPC") { objectType = typeof(NPC) };
-        npcField.RegisterValueChangedCallback(evt =>
-        {
-            selectedNPC = evt.newValue as NPC;
-            Wg.SetSelectedNPC(selectedNPC);
-        });
-
+        VisualElement npcField = npcHelper.NPCObjField();
         root.Add(npcField);
 
         VisualElement gridItems = Wg.FillWeaponGrid(allWeapons);

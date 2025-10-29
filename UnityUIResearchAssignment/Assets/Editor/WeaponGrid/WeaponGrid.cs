@@ -11,9 +11,12 @@ public class WeaponGrid
     private int maxColumns = 3;
     private int count;
 
+    private NPCHelper npcHelper;
 
-    //TODO: (weapon equipping) this logic for selecting/equipping items should be in another file
-    private NPC selectedNPC;
+    public WeaponGrid(NPCHelper npcHelper)
+    {
+        this.npcHelper = npcHelper;
+    }
 
     public VisualElement FillWeaponGrid(List<Weapon> weapons)
     {
@@ -58,14 +61,10 @@ public class WeaponGrid
         VisualElement item = new VisualElement();
         item.AddToClassList("grid-item");
 
-
         item.AddManipulator(new Clickable(() =>
         {
             Debug.Log("clicked on: " + currentWeapon.weaponName);
-            
-            //TODO: (weapon equipping) this logic should be in another file
-            selectedNPC.SetWeaponPrefab(currentWeapon.weaponPrefab);
-            selectedNPC.RefreshWeapon();
+            npcHelper.EquipWeapon(currentWeapon);
         }));
 
         Texture2D preview = AssetPreview.GetAssetPreview(currentWeapon.weaponPrefab);
@@ -96,11 +95,5 @@ public class WeaponGrid
         warningContainer.Add(warning);
 
         return warningContainer;
-    }
-
-    //TODO: (weapon equipping) this logic for selecting/equipping items should be in another file
-    public void SetSelectedNPC(NPC npc)
-    {
-        selectedNPC = npc;
     }
 }
