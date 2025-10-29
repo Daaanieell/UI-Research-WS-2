@@ -35,21 +35,6 @@ public class WeaponGridMain : EditorWindow
         wnd.titleContent = new GUIContent("WeaponGridMain");
     }
 
-    // //TODO: this needs to be properly implemented and replaced
-    // //  (stolen from Akram)
-    // void LoadAllWeapons()
-    // {
-    //     string[] guids = AssetDatabase.FindAssets("t:Weapon", new[] { "Assets/Test Weapons" });
-
-    //     foreach (var guid in guids)
-    //     {
-    //         string path = AssetDatabase.GUIDToAssetPath(guid);
-    //         Weapon prefab = AssetDatabase.LoadAssetAtPath<Weapon>(path);
-    //         allWeapons.Add(prefab);
-    //         Debug.Log(prefab);
-    //     }
-    // }
-
     public void CreateGUI()
     {
         wlm.LoadAllWeapons(ref allWeapons);
@@ -86,7 +71,9 @@ public class WeaponGridMain : EditorWindow
         });
         grid.Clear();
         grid.Add(Wg.FillWeaponGrid(allWeapons, typeDropdown));
-
+        
+        VisualElement NPCEditorContainer = new VisualElement();
+        NPCEditorContainer.AddToClassList("npc-container");
 
         nameField = new TextField("Name");
         nameField.RegisterValueChangedCallback(evt =>
@@ -99,7 +86,7 @@ public class WeaponGridMain : EditorWindow
             selectedNPC.Name = evt.newValue;
             RefreshHealthBarAndScene();
         });
-        root.Add(nameField);
+        NPCEditorContainer.Add(nameField);
 
         healthField = new IntegerField("Health");
         healthField.isDelayed = false;
@@ -113,7 +100,7 @@ public class WeaponGridMain : EditorWindow
             selectedNPC.Health = Mathf.Clamp(evt.newValue, 0, selectedNPC.MaxHealth);
             RefreshHealthBarAndScene();
         });
-        root.Add(healthField);
+        NPCEditorContainer.Add(healthField);
 
         maxHealthField = new IntegerField("Max Health");
         maxHealthField.RegisterValueChangedCallback(evt =>
@@ -131,7 +118,9 @@ public class WeaponGridMain : EditorWindow
 
             RefreshHealthBarAndScene();
         });
-        root.Add(maxHealthField);
+        NPCEditorContainer.Add(maxHealthField);
+
+        root.Add(NPCEditorContainer);
     }
 
     public void RefreshFields()

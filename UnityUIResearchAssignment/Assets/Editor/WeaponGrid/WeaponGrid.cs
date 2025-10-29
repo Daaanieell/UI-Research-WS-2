@@ -13,6 +13,9 @@ public class WeaponGrid
 
     private NPCHelper npcHelper;
 
+    
+    private WeaponLoaderManager wlm = new WeaponLoaderManager();
+
     public WeaponGrid(NPCHelper npcHelper)
     {
         this.npcHelper = npcHelper;
@@ -61,25 +64,9 @@ public class WeaponGrid
             npcHelper.EquipWeapon(currentWeapon);
         }));
 
-        LoadWeaponImage(currentWeapon, item);
+        wlm.LoadWeaponImage(currentWeapon, item);
 
         return item;
-    }
-
-    private static void LoadWeaponImage(Weapon currentWeapon, VisualElement item)
-    {
-        Texture2D preview = AssetPreview.GetAssetPreview(currentWeapon.weaponPrefab);
-        if (preview == null)
-        {
-            preview = AssetPreview.GetMiniThumbnail(currentWeapon.weaponPrefab);
-        }
-
-        var image = new Image();
-        image.image = preview;
-
-        VisualElement name = new Label("" + currentWeapon.weaponName);
-        item.Add(image);
-        item.Add(name);
     }
 
     private VisualElement ShowNoWeaponMessage()
