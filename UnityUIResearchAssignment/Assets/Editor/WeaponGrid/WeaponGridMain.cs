@@ -12,6 +12,7 @@ public class WeaponGridMain : EditorWindow
     private ObjectField npcField;
     private NPCHelper npcHelper;
     private WeaponGrid Wg;
+    DropdownField typeDropdown;
 
     [SerializeField] private List<GameObject> weapons;
 
@@ -53,13 +54,24 @@ public class WeaponGridMain : EditorWindow
         // Instantiate UXML
         VisualElement uxmlContent = m_VisualTreeAsset.Instantiate();
         root.Add(uxmlContent);
-
+        typeDropdown = uxmlContent.Q<DropdownField>("WeaponDropDown");
         var grid = uxmlContent.Q<ScrollView>("grid");
 
         VisualElement npcField = npcHelper.NPCObjField();
         root.Add(npcField);
+        
+        typeDropdown.choices = new List<string> { "All", "Melee", "Ranged", "Magic" };
+        typeDropdown.value = "All";
+        // Wg.SetWeapons(allWeapons);
+        typeDropdown.RegisterValueChangedCallback(evt =>
+        {
+            grid.Clear();            // remove old grid
+            VisualElement updatedGrid = Wg.FillWeaponGrid(allWeapons, typeDropdown);
+            grid.Add(updatedGrid);
 
-        VisualElement gridItems = Wg.FillWeaponGrid(allWeapons);
-        grid.Add(gridItems);
+        });
+        grid.Clear();
+        grid.Add(Wg.FillWeaponGrid(allWeapons, typeDropdown));
     }
+    
 }
