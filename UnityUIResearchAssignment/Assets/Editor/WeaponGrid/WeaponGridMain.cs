@@ -2,16 +2,18 @@
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor;
+using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 public class WeaponGridMain : EditorWindow
 {
     [SerializeField] private VisualTreeAsset m_VisualTreeAsset = default;
+    private ObjectField npcField;
+    private NPCHelper npcHelper;
+    private WeaponGrid Wg;
     DropdownField typeDropdown;
 
-    private WeaponGrid Wg = new WeaponGrid();
-    
     [SerializeField] private List<GameObject> weapons;
 
     //TODO: temp list for testing weapon grid replace this
@@ -23,7 +25,7 @@ public class WeaponGridMain : EditorWindow
         WeaponGridMain wnd = GetWindow<WeaponGridMain>();
         wnd.titleContent = new GUIContent("WeaponGridMain");
     }
-    
+
     //TODO: this needs to be properly implemented and replaced
     //  (stolen from Akram)
     void LoadAllWeapons()
@@ -42,7 +44,10 @@ public class WeaponGridMain : EditorWindow
     public void CreateGUI()
     {
         LoadAllWeapons();
-            
+
+        npcHelper = new NPCHelper();
+        Wg = new WeaponGrid(npcHelper);
+
         // Each editor window contains a root VisualElement object
         VisualElement root = rootVisualElement;
 
@@ -51,6 +56,9 @@ public class WeaponGridMain : EditorWindow
         root.Add(uxmlContent);
         typeDropdown = uxmlContent.Q<DropdownField>("WeaponDropDown");
         var grid = uxmlContent.Q<ScrollView>("grid");
+
+        VisualElement npcField = npcHelper.NPCObjField();
+        root.Add(npcField);
         
         typeDropdown.choices = new List<string> { "All", "Melee", "Ranged", "Magic" };
         typeDropdown.value = "All";
