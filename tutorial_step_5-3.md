@@ -27,12 +27,12 @@ public class WeaponGrid {
 			//columns
 			for (column < maxColumns) {
 				VisualElement item = new VisualElement();
-	
+
 			    item.OnClick(() => {
 			 		//this is an OnClick event for each item
 		   			//add logic here for selecting/equipping a weapon
 				})
-	
+
 				rowContainer.Add(item)
 			}
 
@@ -73,9 +73,10 @@ USS file:
 - Give each class a different `background-color` to see differentiate between each VisualElement in the UI.
 - Give each class a fitting `margin` property
 - Use the CSS selectors to style the image within the items, e.g.:
+
   ```CSS
   .grid-item > .unity-image {
-      <!-- this will style the labels within the item -->
+      <!-- this will style the image within every .grid-item -->
   }
   ```
 
@@ -83,9 +84,18 @@ USS file:
 
 #### Selecting and equipping a weapon
 
-> WIP, implementation might change
+To equip a weapon on an NPC, you need to a the Weapon scriptable object. Using the `SetWeaponPrefab()` and `RefreshWeapon()` functions from the NPC script a weapon can be equipped.
+
+Using these functions within the item's onclick event, you can make the item select a weapon and equip it on the NPC.
+
+Within WeaponGrid.cs:
+
+- Find the weapons onclick event within the given code.
+- Use the `SetWeaponPrefab()` function to set the weapon prefab.
+- Use the `RefreshWeapon()` function to refresh the weapon on the NPC.
+
+#### The end result
 
 Your weapongrid is now finished and should look like this:
 
 <img width="409" height="861" alt="image" src="https://github.com/user-attachments/assets/b88a789a-a287-4766-af24-18459d3ce974" />
-
