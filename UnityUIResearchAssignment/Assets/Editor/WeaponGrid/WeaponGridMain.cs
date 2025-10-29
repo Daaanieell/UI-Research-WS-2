@@ -60,6 +60,9 @@ public class WeaponGridMain : EditorWindow
         root.Add(npcField);
 
 
+        // ---------------------- NPC editor down here ---------------------- 
+        #region
+        
         typeDropdown.choices = new List<string> { "All", "Melee", "Ranged", "Magic" };
         typeDropdown.value = "All";
         typeDropdown.RegisterValueChangedCallback(evt =>
@@ -71,7 +74,7 @@ public class WeaponGridMain : EditorWindow
         });
         grid.Clear();
         grid.Add(Wg.FillWeaponGrid(allWeapons, typeDropdown));
-        
+
         VisualElement NPCEditorContainer = new VisualElement();
         NPCEditorContainer.AddToClassList("npc-container");
 
@@ -121,6 +124,7 @@ public class WeaponGridMain : EditorWindow
         NPCEditorContainer.Add(maxHealthField);
 
         root.Add(NPCEditorContainer);
+        #endregion
     }
 
     public void RefreshFields()
