@@ -11,6 +11,13 @@ public class WeaponGrid
     private int maxColumns = 3;
     private int count;
 
+    private NPCHelper npcHelper;
+
+    public WeaponGrid(NPCHelper npcHelper)
+    {
+        this.npcHelper = npcHelper;
+    }
+
     public VisualElement FillWeaponGrid(List<Weapon> weapons,DropdownField typeDropdown)
     {
         List<Weapon> filteredWeapons = filterWeaponType(weapons,typeDropdown);
@@ -40,7 +47,6 @@ public class WeaponGrid
 
             gridContainer.Add(rowElement);
         }
-
         return gridContainer;
     }
 
@@ -49,11 +55,10 @@ public class WeaponGrid
         VisualElement item = new VisualElement();
         item.AddToClassList("grid-item");
 
-
         item.AddManipulator(new Clickable(() =>
         {
             Debug.Log("clicked on: " + currentWeapon.weaponName);
-            //TODO: add function here for equipping a weapon!
+            npcHelper.EquipWeapon(currentWeapon);
         }));
 
         Texture2D preview = AssetPreview.GetAssetPreview(currentWeapon.weaponPrefab);
