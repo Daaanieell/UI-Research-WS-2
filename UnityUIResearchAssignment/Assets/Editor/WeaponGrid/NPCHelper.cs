@@ -5,11 +5,18 @@ public class NPCHelper
 {
     private NPC selectedNPC;
     private ObjectField npcField;
+    private WeaponGridMain wg;
+
+
+    public NPCHelper(WeaponGridMain wg)
+    {
+        this.wg = wg;
+    }
     public void SetSelectedNPC(NPC npc)
     {
         selectedNPC = npc;
     }
-    public NPC GetSelectedNPC(NPC npc)
+    public NPC GetSelectedNPC()
     {
         return selectedNPC;
     }
@@ -20,12 +27,13 @@ public class NPCHelper
         selectedNPC.RefreshWeapon();
     }
 
-    public VisualElement NPCObjField()
+    public ObjectField NPCObjField()
     {
         npcField = new ObjectField("Select NPC") { objectType = typeof(NPC) };
         npcField.RegisterValueChangedCallback(evt =>
         {
             SetSelectedNPC(evt.newValue as NPC);
+            wg.RefreshFields();
         });
        
         return npcField;
