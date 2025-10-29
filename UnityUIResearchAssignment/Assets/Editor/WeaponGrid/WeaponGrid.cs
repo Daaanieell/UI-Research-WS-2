@@ -52,7 +52,6 @@ public class WeaponGrid
 
             gridContainer.Add(rowElement);
         }
-
         return gridContainer;
     }
 
