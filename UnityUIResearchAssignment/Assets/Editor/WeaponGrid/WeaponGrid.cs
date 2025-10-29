@@ -61,6 +61,13 @@ public class WeaponGrid
             npcHelper.EquipWeapon(currentWeapon);
         }));
 
+        LoadWeaponImage(currentWeapon, item);
+
+        return item;
+    }
+
+    private static void LoadWeaponImage(Weapon currentWeapon, VisualElement item)
+    {
         Texture2D preview = AssetPreview.GetAssetPreview(currentWeapon.weaponPrefab);
         if (preview == null)
         {
@@ -73,8 +80,6 @@ public class WeaponGrid
         VisualElement name = new Label("" + currentWeapon.weaponName);
         item.Add(image);
         item.Add(name);
-
-        return item;
     }
 
     private VisualElement ShowNoWeaponMessage()
