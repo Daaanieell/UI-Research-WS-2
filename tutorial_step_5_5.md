@@ -15,3 +15,7 @@ Now you can start creating the fields for all attributes -> this works exactly a
 -> add healthField.SetValueWithoutNotify(selectedNPC.Health); to the end of the maxHealthField
 
 add the your container to root
+
+to change weapons -> create a new method called EquipWeaon in NPCHelper.cs (use the functions of NPC.cs)
+
+now open WeaponGrid.cs and modify the method "GenerateItemElement" -> call the the new created method when an item is clicked
