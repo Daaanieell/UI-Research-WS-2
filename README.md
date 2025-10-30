@@ -131,7 +131,8 @@ public class HealthBarUI : MonoBehaviour
     {
         UpdateUI(force: true);
     }
-}```
+}
+```
 
 ### Step 5: Weapon Selector
 In this step, you will create a Weapon Selector that allows you to change the weapon in the player's hand directly from the Scene view.
@@ -148,14 +149,14 @@ In this step you will be creating your first Visual Element, a title for the "We
 2. Opening the UXML file inside your preferred editor, which allows for more control over each element.
 
 **Method 1: Using the UI Builder**
-1. It's time to create an Editor Window!  Right-Click on your 'Assets' folder, click on 'Create', click on 'UI Toolkit' and finally on 'Editor Window'. 
+1. It's time to create an Editor Window! Right-click on your 'Assets' folder, click on 'Create', click on 'UI Toolkit' and finally on 'Editor Window'. 
 2. Open the UI Builder once more by double-clicking on your UXML-document.
 ![[506619646-86926ca6-65b3-41d3-9ec5-b3be8e7cd2ff.png]]
 
 3. Using the UI Builder window, navigate to the 'Library' section and search for a label.
-4. Drag the Label to the canvas and give it a name, like for example "Weapon Selector".
+4. Drag the Label to the canvas and give it a name, e.g. 'Weapon Selector'.
 
-You can change the properties of this label using the "Inspector" window in the UI Builder on the right side of your screen.
+You can change the properties of this label using the **'Inspector'** window in the UI Builder on the right side of your screen.
 
 **Method 2: Editing through the use of the UXML file**
 1. Open the .UXML file with your preferred editor. (You can do so by clicking on the arrow of the UXML file, a stylesheet file will pop out and once double-clicked, it will open the actual UXML)
@@ -169,18 +170,18 @@ Your end result should look something like this:
 
 #### Step 5.2: Create a Dropdown Field
 
-This step explains how to add a **DropdownField** in UI Toolkit and make it filter through a list of weapons in your custom Unity Editor window.
+This step explains how to add a **DropdownField** in UI Toolkit and make it filter through a list of weapons in your custom Unity Editor Window.
 
 1. **Add a Dropdown Field**
-   - Once you have added a `VisualElement`, you can add a `DropdownField` to it.
    - In **UI Builder**, go to the **Library**, search for `DropdownField`, and add it to your visual element.
+   - Once you have added a `VisualElement`, you can add a `DropdownField` to it.
 
 2. **Make the Dropdown Visible**
    - In the **UXML** file, make sure the `DropdownField` is visible in your layout and has a unique name (e.g., `WeaponDropDown`).
 
 3. **Instantiate Your VisualTreeAsset**
    - In your editor script, make sure to instantiate your `VisualTreeAsset` and add it to the `rootVisualElement`:
-     ```csharp
+    ```c#
      var visualTree = m_VisualTreeAsset.Instantiate();
      rootVisualElement.Add(visualTree);
      ```
