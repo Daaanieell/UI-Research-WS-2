@@ -4,7 +4,7 @@ In this workshop, you will design and build (editor) UI in Unity using UI toolki
 - A "Weapon Selector", editor UI that allows you to change NPC stats and weapons.
 - A floating healthbar and name above NPCs, this is in-game UI. 
 
-<img width="1257" height="784" alt="image" src="https://github.com/user-attachments/assets/4d318c1f-3d33-4a1a-b280-32768a454c80" />
+<img width="1264" height="808" alt="image" src="https://github.com/user-attachments/assets/d6f4c80a-eb96-4d61-91ca-2597c76d415b" />
 
 To view the answer to a certain step, check the relevant branch. These branches should be used if you are stuck on a certain step.
 
