@@ -3,6 +3,19 @@
 ## Each step has a matching solution branch. If you’re stuck, you can move to the branch corresponding with the step to continue working.
 
 ## Table of Contents
+  - [Introduction](#introduction)
+	- [🧑‍💻 Step 1: Clone the GitHub repository to your machine.](#-step-1-clone-the-github-repository-to-your-machine)
+    - [🙆‍♂️ Step 2: Launching the project in Unity Hub.](#step-2-launching-the-project-in-unity-hub)
+    - [💰 Step 3 \& 4, Creating a health bar and a name for the NPC.](#-step-3--4-creating-a-health-bar-and-a-name-for-the-npc)
+    - [☎️ Step 5: Weapon Selector](#️-step-5-weapon-selector)
+      - [Step 5.1: Creating your first VisualElement](#step-51-creating-your-first-visualelement)
+      - [Step 5.2: Create a Dropdown Field](#step-52-create-a-dropdown-field)
+      - [Step 5.3: Weapon Grid](#step-53-weapon-grid)
+      - [Step 5.4: Selecting NPCs](#step-54-selecting-npcs)
+      - [Step 5.5: Changing weapons and Statistics](#step-55-changing-weapons-and-statistics)
+    - [🤩 The End](#-the-end)
+    - [🗺️ Step 6: Creating a minimap](#️-step-6-creating-a-minimap)
+
 
 ## Introduction
 
