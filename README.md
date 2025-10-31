@@ -2,6 +2,8 @@
 
 ## Each step has a matching solution branch. If you’re stuck, you can move to the branch corresponding with the step to continue working.
 
+## Table of Contents
+
 ## Introduction
 
 In this workshop, you will design and build (editor) UI in Unity using UI toolkit. You will be making:
@@ -26,7 +28,7 @@ If you followed along with the steps, you should have:
 - A floating health bar and name above an NPC that are changeable in the inspector.
 - (optional) A minimap in the corner of your screen!
 
-# Table of Contents
+
 
 
 ## 🔥 Follow along with the steps listed below to create an Editor UI in Unity!
@@ -44,14 +46,14 @@ Using GitHub desktop:
 Or use your own preferred method. 💅
 
 ---
-### 🙆‍♂️ Step 2: 
+### 🙆‍♂️ Step 2: Launching the project in Unity Hub.
 Opening the project in Unity Hub.
 1. Launch Unity Hub.
 2. Click *'Add project from disk'* and select the cloned folder.
 3. After loading in make sure to load UIToolkitScene before moving on.
 
 ---
-### 💰 Step 3 & 4
+### 💰 Step 3 & 4, Creating a health bar and a name for the NPC.
 Health bar and floating Name Tutorial.
 
 1. Right-Click on your 'Assets' folder, click on 'Create', click on 'UI Toolkit' and finally on UI Document. Open the created file, it should open it automatically in the UI Builder. You will know this has worked if the newly opened page says 'UI Builder' at the top!
@@ -164,7 +166,7 @@ public class HealthBarUI : MonoBehaviour
 }
 ```
 
-### Step 5: Weapon Selector
+### ☎️ Step 5: Weapon Selector
 In this step, you will create a Weapon Selector that allows you to change the weapon in the player's hand directly from the Scene view.
 This tool will make it easier for designers to test and adjust configurations during the development phase without needing to enter Play Mode every time.
 
@@ -399,7 +401,7 @@ Links for step 5.5:
 
 🚀 You should now be able to change the weapons and stats for the NPC!
 
-## The End
+### 🤩 The End
 
 Congratulations, you've completed the tutorial!
 By now you learned how to use Unity's UI Toolkit to build both in-game and editor UI elements.
@@ -410,6 +412,6 @@ You've explored how the Editor UI can interact with objects in the Scene, and yo
 - A Health Bar and Floating Name displayed above your player which appears in-game and are changeable through the inspector.
 - A functional Weapon Selector built with the Editor UI that filters weapons based on weapon type.
 
-### 🤓 If you somehow got to this step before the time ran out, then here's an extra challenge for you, 10x developer! 
+### 🤓 If you somehow got to this step before the time ran out, then here's an extra challenge for you!
 
-#### Step 6: Creating a minimap!
+#### 🗺️ Step 6: Creating a minimap
