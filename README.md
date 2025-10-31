@@ -226,21 +226,14 @@ This step explains how to add a **DropdownField** in UI Toolkit and make it filt
 2. **Make the Dropdown Visible**
    - In the **UXML** file, make sure the `DropdownField` is visible in your layout and has a unique name (e.g., `WeaponDropDown`).
 
-3. **Instantiate Your VisualTreeAsset (if this didn't happen automatically by Unity, we're assuming this step is already done!)**
-   - In your editor script, inside the CreateGUI method, make sure to instantiate your `VisualTreeAsset` and add it to the `rootVisualElement`:
-    ```c#
-     var visualTree = m_VisualTreeAsset.Instantiate();
-     rootVisualElement.Add(visualTree);
-     ```
-
-4. **Reference the Dropdown in Code**
+3. **Reference the Dropdown in Code**
    - Inside the `CreateGUI()` method, get your dropdown from the UXML:
      [If you're curious about the Q method](https://docs.unity3d.com/2020.1/Documentation/ScriptReference/UIElements.UQueryExtensions.Q.html)
      ```csharp
      typeDropdown = visualTree.Q<DropdownField>("WeaponDropDown");
      ```
 
-5. **Assign Choices to the Dropdown**
+4. **Assign Choices to the Dropdown**
    - Use `typeDropdown.choices` to add a new list of weapon types:
      ```csharp
      typeDropdown.choices = new List<string> { "All", "Melee", "Ranged", "Magic" };
@@ -250,7 +243,7 @@ This step explains how to add a **DropdownField** in UI Toolkit and make it filt
      typeDropdown.value = "All";
      ```
 
-6. **Register the Value Change Event**
+5. **Register the Value Change Event**
    - To refresh your editor window when the selection changes, use:
      ```csharp
      typeDropdown.RegisterValueChangedCallback(evt =>
@@ -261,14 +254,14 @@ This step explains how to add a **DropdownField** in UI Toolkit and make it filt
      });
      ```
 
-7. **Render the Initial Grid**
+6. **Render the Initial Grid**
    - When the editor window opens, build the grid once so that all weapons are shown:
      ```csharp
      grid.Clear();
      grid.Add(Wg.FillWeaponGrid(allWeapons, typeDropdown));
      ```
 
-8. **Filter Weapons by Dropdown Value**
+7. **Filter Weapons by Dropdown Value**
    - In your `FilterWeaponType()` method (which resides in the WeaponGrid file), reference the dropdown’s value and check if it’s not `"All"`.
    - You can use a lambda function that selects only the weapons that match the dropdown value:
      ```csharp
@@ -276,11 +269,11 @@ This step explains how to add a **DropdownField** in UI Toolkit and make it filt
          filteredWeapons = weapons.FindAll(w => w.weaponType.ToString() == selectedType);
      ```
 
-9. **Return and Display the Filtered List**
+8. **Return and Display the Filtered List**
    - Save the filtered list in a new `List<Weapon>` and return it to be displayed.
    - Pass the returned list into your loop that creates the weapon items in the grid.
 
-10. **Test the Dropdown**
+9. **Test the Dropdown**
     - When you open your editor window:
       - `"All"` should be selected by default and display every weapon.
       - Selecting `"Melee"`, `"Ranged"`, or `"Magic"` should instantly update the grid to show only that weapon type.
