@@ -4,8 +4,8 @@
 
 ## Table of Contents
   - [Introduction](#introduction)
-	- [🧑‍💻 Step 1: Clone the GitHub repository to your machine.](#-step-1-clone-the-github-repository-to-your-machine)
-    - [🙆‍♂️ Step 2: Launching the project in Unity Hub.](#step-2-launching-the-project-in-unity-hub)
+	- [🧑‍💻 Step 1: Clone the GitHub repository to your machine.](#step-1)
+    - [🙆‍♂️ Step 2: Launching the project in Unity Hub.](#step-2)
     - [💰 Step 3 \& 4, Creating a health bar and a name for the NPC.](#-step-3--4-creating-a-health-bar-and-a-name-for-the-npc)
     - [☎️ Step 5: Weapon Selector](#️-step-5-weapon-selector)
       - [Step 5.1: Creating your first VisualElement](#step-51-creating-your-first-visualelement)
@@ -46,6 +46,7 @@ If you followed along with the steps, you should have:
 
 ## 🔥 Follow along with the steps listed below to create an Editor UI in Unity!
 
+<a id="step-1"></a>
 ### 🧑‍💻 Step 1: Clone the GitHub repository to your machine.
 Using the terminal:
 1. Grab the HTTPS link from the repository's main branch.
@@ -59,6 +60,7 @@ Using GitHub desktop:
 Or use your own preferred method. 💅
 
 ---
+<a id="step-2"></a>
 ### 🙆‍♂️ Step 2: Launching the project in Unity Hub.
 Opening the project in Unity Hub.
 1. Launch Unity Hub.
