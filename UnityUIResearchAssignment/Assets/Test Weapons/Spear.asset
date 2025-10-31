@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: be4da936663440ef3a76a6803e4a913b, type: 3}
-  m_Name: TestWeapon2
+  m_Name: Spear
   m_EditorClassIdentifier: Assembly-CSharp::Weapon
-  weaponName: green axe
+  weaponName: Spear
   damage: 50
   attackSpeed: 2
   weaponSprite: {fileID: 0}
-  weapon: {fileID: 3936644519421218985, guid: a8361ebcad6afd346b67aa42588a6d12, type: 3}
+  weaponPrefab: {fileID: 3730896066875211002, guid: d3c7b4fc5a5668644b6c91699ea55574, type: 3}
+  weaponType: 2
