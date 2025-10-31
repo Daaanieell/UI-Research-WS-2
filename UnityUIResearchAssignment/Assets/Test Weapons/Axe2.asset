@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: be4da936663440ef3a76a6803e4a913b, type: 3}
-  m_Name: TestWeapon 1
+  m_Name: Axe2
   m_EditorClassIdentifier: Assembly-CSharp::Weapon
-  weaponName: blue axe
-  damage: 50
+  weaponName: Axe2
+  damage: 504
   attackSpeed: 2
-  weaponSprite: {fileID: 0}
-  weapon: {fileID: 3936644519421218985, guid: fbfad3842d3cdd14f8a5e4ff729c8992, type: 3}
+  weaponPrefab: {fileID: 8569003258840614191, guid: c7f9c7f57c91f704f80129c2cf0312a2, type: 3}
+  weaponType: 0

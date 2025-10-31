@@ -50,6 +50,8 @@ public class WeaponGridMain : EditorWindow
         typeDropdown = uxmlContent.Q<DropdownField>("WeaponDropDown");
         var grid = uxmlContent.Q<ScrollView>("grid");
 
+        var weaponSelectorContainer = uxmlContent.Q<VisualElement>("Weapon Selector");
+        
         ObjectField npcField = npcHelper.NPCObjField();
         npcField.RegisterValueChangedCallback(evt =>
         {
@@ -57,7 +59,7 @@ public class WeaponGridMain : EditorWindow
 
             RefreshFields();
         });
-        root.Add(npcField);
+        weaponSelectorContainer.Add(npcField);
 
 
         // ---------------------- NPC editor down here ---------------------- 
@@ -123,7 +125,7 @@ public class WeaponGridMain : EditorWindow
         });
         NPCEditorContainer.Add(maxHealthField);
 
-        root.Add(NPCEditorContainer);
+        weaponSelectorContainer.Add(NPCEditorContainer);
         #endregion
     }
 

@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: be4da936663440ef3a76a6803e4a913b, type: 3}
-  m_Name: TestWeapon4
+  m_Name: Mace
   m_EditorClassIdentifier: Assembly-CSharp::Weapon
-  weaponName: TestWeapon4
-  damage: 0
-  attackSpeed: 0
+  weaponName: Mace
+  damage: 50
+  attackSpeed: 2
   weaponSprite: {fileID: 0}
-  weaponPrefab: {fileID: 377052246541980805, guid: cac5325256f390440a0898d4871f9fdc, type: 3}
-  weaponType: 2
+  weaponPrefab: {fileID: 755092736629633454, guid: 8f8a0150862bcab48ae36426803c6541, type: 3}
+  weaponType: 0

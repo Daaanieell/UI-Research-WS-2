@@ -7,7 +7,7 @@ public class Weapon : ScriptableObject
     public string weaponName;
     public int damage;
     public float attackSpeed;
-    public Sprite weaponSprite;
+    // public Sprite weaponSprite; RIP
     [FormerlySerializedAs("weapon")] public GameObject weaponPrefab;
     public WeaponType weaponType;
 }
