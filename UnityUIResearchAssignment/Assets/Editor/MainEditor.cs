@@ -57,15 +57,8 @@ public class MainEditor : EditorWindow
 
         var weaponSelectorContainer = uxmlContent.Q<VisualElement>("Weapon Selector");
 
-        ObjectField npcField = npcHelper.NPCObjField();
-        npcField.RegisterValueChangedCallback(evt =>
-        {
-            selectedNPC = evt.newValue as NPC;
-
-            RefreshFields();
-        });
-        weaponSelectorContainer.Add(npcField);
-
+        // STEP 5.2
+        // TODO: Follow bullet point 2 here
 
         // ---------------------- NPC editor down here ---------------------- 
         #region
