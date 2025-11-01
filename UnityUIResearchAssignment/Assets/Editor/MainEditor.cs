@@ -75,6 +75,55 @@ public class MainEditor : EditorWindow
         grid.Clear();
         grid.Add(Wg.FillWeaponGrid(allWeapons, typeDropdown));
 
+        VisualElement NPCEditorContainer = new VisualElement();
+        NPCEditorContainer.AddToClassList("npc-container");
+
+        nameField = new TextField("Name");
+        nameField.RegisterValueChangedCallback(evt =>
+        {
+            if (selectedNPC == null)
+            {
+                Debug.LogWarning("selectedNPC = null!!!");
+                return;
+            }
+            selectedNPC.Name = evt.newValue;
+            RefreshHealthBarAndScene();
+        });
+        NPCEditorContainer.Add(nameField);
+
+        healthField = new IntegerField("Health");
+        healthField.isDelayed = false;
+        healthField.RegisterValueChangedCallback(evt =>
+        {
+            if (selectedNPC == null)
+            {
+                Debug.LogWarning("selectedNPC = null!!!");
+                return;
+            }
+            selectedNPC.Health = Mathf.Clamp(evt.newValue, 0, selectedNPC.MaxHealth);
+            RefreshHealthBarAndScene();
+        });
+        NPCEditorContainer.Add(healthField);
+
+        maxHealthField = new IntegerField("Max Health");
+        maxHealthField.RegisterValueChangedCallback(evt =>
+        {
+            if (selectedNPC == null)
+            {
+                Debug.LogWarning("selectedNPC = null!!!");
+                return;
+            }
+            ;
+            selectedNPC.MaxHealth = Mathf.Max(1, evt.newValue);
+            selectedNPC.Health = Mathf.Clamp(selectedNPC.Health, 0, selectedNPC.MaxHealth);
+
+            healthField.SetValueWithoutNotify(selectedNPC.Health);
+
+            RefreshHealthBarAndScene();
+        });
+        NPCEditorContainer.Add(maxHealthField);
+
+        weaponSelectorContainer.Add(NPCEditorContainer);
         #endregion
     }
 
