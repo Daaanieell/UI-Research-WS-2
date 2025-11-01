@@ -61,7 +61,14 @@ public class WeaponGrid
         item.AddManipulator(new Clickable(() =>
         {
             Debug.Log("clicked on: " + currentWeapon.weaponName);
-            npcHelper.EquipWeapon(currentWeapon);
+
+            // STEP 5.5 
+            // ------------------------- ONLY CHANGE CODE IN HERE -------------------------  
+
+            // TODO: Create an NPCHelper method to equip weapons! 
+            
+            // ------------------------- ONLY CHANGE CODE IN HERE -------------------------  
+            
         }));
 
         wlm.LoadWeaponImage(currentWeapon, item);

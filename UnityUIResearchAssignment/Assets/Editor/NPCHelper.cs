@@ -21,11 +21,8 @@ public class NPCHelper
         return selectedNPC;
     }
 
-    public void EquipWeapon(Weapon currentWeapon)
-    {
-        selectedNPC.SetWeaponPrefab(currentWeapon.weaponPrefab);
-        selectedNPC.RefreshWeapon();
-    }
+    // STEP 5.5
+    // public void EquipWeapon(Weapon currentWeapon)
 
     public ObjectField NPCObjField()
     {
@@ -35,7 +32,7 @@ public class NPCHelper
             SetSelectedNPC(evt.newValue as NPC);
             wg.RefreshFields();
         });
-       
+
         return npcField;
     }
 }
