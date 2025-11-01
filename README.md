@@ -8,10 +8,10 @@
     - [🙆‍♂️ Step 2: Launching the project in Unity Hub.](#step-2)
     - [💰 Step 3 \& 4, Creating a health bar and a name for the NPC.](#-step-3--4-creating-a-health-bar-and-a-name-for-the-npc)
     - [☎️ Step 5: Weapon Selector](#️-step-5-weapon-selector)
-      - [Step 5.1: Creating your first VisualElement](#step-51-creating-your-first-visualelement)
-      - [Step 5.2: Create a Dropdown Field](#step-52-create-a-dropdown-field)
-      - [Step 5.3: Weapon Grid](#step-53-weapon-grid)
-      - [Step 5.4: Selecting NPCs](#step-54-selecting-npcs)
+      - [Step 5.1: Start on the Weapon Selector](#step-51-start-on-the-weapon-selector)
+      - [Step 5.2: Selecting NPCs](#step-52-selecting-npcs)
+      - [Step 5.3: Create a Dropdown Field](#step-53-create-a-dropdown-field)
+      - [Step 5.4: Weapon Grid](#step-54-weapon-grid)
       - [Step 5.5: Changing weapons and Statistics](#step-55-changing-weapons-and-statistics)
     - [🤩 The End](#-the-end)
     - [🗺️ Step 6: Creating a minimap](#️-step-6-creating-a-minimap)
@@ -306,16 +306,15 @@ Links for step 5.5:
 
 **Requirements: NPC class, RefreshFields and RefreshHealthBarAndScene methods**
 
-- Go to WeaponGridMain.cs and add a new VisuelElement to the CreateGUI method (e.g. NPCEditorContainer)
-- Now you can start creating the fields for all attributes, this works exactly the same as in step 5.4, so just try it out for yourself!
-- Don't forget that nameField, healthField and maxHealthField are not ObjectFields
-- Use Mathf.Max for the healthField and Mathf.Clamp for the maxHealthField
-- After initializing healthField, add 'healthField.isDelayed = false;' (this makes it work better).
-- Add healthField.SetValueWithoutNotify(selectedNPC.Health); to the end of the maxHealthField
-- Add the your container to root
-
-- To change weapons, create a new method called 'EquipWeapon' in NPCHelper.cs (use the functions of NPC.cs)
-- Now open WeaponGrid.cs and modify the method 'GenerateItemElement',  try calling the newly created method when an item is clicked
+1. Go to WeaponGridMain.cs and add a new VisuelElement to the CreateGUI method (e.g. NPCEditorContainer)
+2. Now you can start creating the fields for all attributes, this works exactly the same as in step 5.4, so just try it out for yourself!
+3. Don't forget that nameField, healthField and maxHealthField are not ObjectFields
+4. Use Mathf.Max for the healthField and Mathf.Clamp for the maxHealthField
+5. After initializing healthField, add 'healthField.isDelayed = false;' (this makes it work better).
+6. Add healthField.SetValueWithoutNotify(selectedNPC.Health); to the end of the maxHealthField
+7. Add the your container to root
+8. To change weapons, create a new method called 'EquipWeapon' in NPCHelper.cs (use the functions of NPC.cs)
+9.  Now open WeaponGrid.cs and modify the method 'GenerateItemElement',  try calling the newly created method when an item is clicked
 
 🚀 You should now be able to change the weapons and stats for the NPC!
 
