@@ -997,12 +997,10 @@ PrefabInstance:
       value: NPC
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 7799775382947817593, guid: fc537fce05d06e94baa55554f9f5f97e, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7799775382947817593, guid: fc537fce05d06e94baa55554f9f5f97e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc537fce05d06e94baa55554f9f5f97e, type: 3}
 --- !u!1001 &515527684
 PrefabInstance:
