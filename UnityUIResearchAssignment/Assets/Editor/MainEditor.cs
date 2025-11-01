@@ -12,7 +12,9 @@ public class MainEditor : EditorWindow
     [SerializeField] private VisualTreeAsset m_VisualTreeAsset = default;
     private NPCHelper npcHelper;
     private WeaponGrid Wg;
-    DropdownField typeDropdown;
+
+    // STEP 5.3
+    // TODO: Add dropdown variable
 
     private NPC selectedNPC;
     private TextField nameField;
@@ -39,7 +41,7 @@ public class MainEditor : EditorWindow
     {
         wlm.LoadAllWeapons(ref allWeapons);
         npcHelper = new NPCHelper(new MainEditor());
-        
+
         // STEP 5.4
         // Create a WeaponGrid instance
 
@@ -47,11 +49,14 @@ public class MainEditor : EditorWindow
 
         VisualElement uxmlContent = m_VisualTreeAsset.Instantiate();
         root.Add(uxmlContent);
-        typeDropdown = uxmlContent.Q<DropdownField>("WeaponDropDown");
+
+        // STEP 5.3
+        // TODO: Follow bullet point 3 here
+
         var grid = uxmlContent.Q<ScrollView>("grid");
 
         var weaponSelectorContainer = uxmlContent.Q<VisualElement>("Weapon Selector");
-        
+
         ObjectField npcField = npcHelper.NPCObjField();
         npcField.RegisterValueChangedCallback(evt =>
         {
@@ -64,25 +69,18 @@ public class MainEditor : EditorWindow
 
         // ---------------------- NPC editor down here ---------------------- 
         #region
-        
-        typeDropdown.choices = new List<string> { "All", "Melee", "Ranged", "Magic" };
-        typeDropdown.value = "All";
-        typeDropdown.RegisterValueChangedCallback(evt =>
-        {
-            grid.Clear();
-            VisualElement updatedGrid = Wg.FillWeaponGrid(allWeapons, typeDropdown);
-            grid.Add(updatedGrid);
 
-        });
-        grid.Clear();
-        grid.Add(Wg.FillWeaponGrid(allWeapons, typeDropdown));
+        // STEP 5.3
+        // TODO: Follow bullet point 4 here
+        // TODO: Follow bullet point 5 here
+        // TODO: Follow bullet point 6 here
 
         // STEP 5.5
         // TODO: Add fields for:
         // - Name
         // - Health
         // - Max Health
-        
+
         #endregion
     }
 

@@ -90,8 +90,9 @@ public class WeaponGrid
     {       
         count = 0;
         var filteredWeapons = weapons;
-        if (selectedWeaponType.value != "All")
-            filteredWeapons = weapons.FindAll(w => w.weaponType.ToString() == selectedWeaponType.value);
+
+        // STEP 5.3
+        // TODO: Follow bullet point 7 here
 
         return filteredWeapons;
     }
