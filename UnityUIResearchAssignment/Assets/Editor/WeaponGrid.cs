@@ -58,10 +58,15 @@ public class WeaponGrid
         VisualElement item = new VisualElement();
         item.AddToClassList("grid-item");
 
+        // OnClick for each item
         item.AddManipulator(new Clickable(() =>
         {
             Debug.Log("clicked on: " + currentWeapon.weaponName);
-            npcHelper.EquipWeapon(currentWeapon);
+            // --------------------- ONLY CHANGE CODE IN HERE --------------------- 
+
+            // TODO: Use the NPCHelper class to equip a weapon on an NPC
+                             
+            // --------------------- ONLY CHANGE CODE IN HERE --------------------- 
         }));
 
         wlm.LoadWeaponImage(currentWeapon, item);

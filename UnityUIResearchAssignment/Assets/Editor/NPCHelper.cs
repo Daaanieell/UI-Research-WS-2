@@ -21,11 +21,8 @@ public class NPCHelper
         return selectedNPC;
     }
 
-    public void EquipWeapon(Weapon currentWeapon)
-    {
-        selectedNPC.SetWeaponPrefab(currentWeapon.weaponPrefab);
-        selectedNPC.RefreshWeapon();
-    }
+    // TODO: Create a function here for equipping a weapon
+    // public void EquipWeapon(Weapon currentWeapon) {}
 
     public ObjectField NPCObjField()
     {
