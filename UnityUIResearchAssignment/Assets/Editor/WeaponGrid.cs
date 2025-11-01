@@ -13,13 +13,8 @@ public class WeaponGrid
 
     private NPCHelper npcHelper;
 
-    
-    private WeaponLoaderManager wlm = new WeaponLoaderManager();
-
-    public WeaponGrid(NPCHelper npcHelper)
-    {
-        this.npcHelper = npcHelper;
-    }
+    // STEP 5.4
+    // TODO: Use the WeaponLoaderManager to load all weapon SO's
 
     public VisualElement FillWeaponGrid(List<Weapon> weapons,DropdownField typeDropdown)
     {
@@ -66,12 +61,13 @@ public class WeaponGrid
             // ------------------------- ONLY CHANGE CODE IN HERE -------------------------  
 
             // TODO: Create an NPCHelper method to equip weapons! 
-            
+
             // ------------------------- ONLY CHANGE CODE IN HERE -------------------------  
-            
+
         }));
 
-        wlm.LoadWeaponImage(currentWeapon, item);
+        //STEP 5.4
+        // TODO: Use the WeaponLoaderManager to load the weapon image
 
         return item;
     }

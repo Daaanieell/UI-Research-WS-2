@@ -39,7 +39,9 @@ public class MainEditor : EditorWindow
     {
         wlm.LoadAllWeapons(ref allWeapons);
         npcHelper = new NPCHelper(new MainEditor());
-        Wg = new WeaponGrid(npcHelper);
+        
+        // STEP 5.4
+        // Create a WeaponGrid instance
 
         VisualElement root = rootVisualElement;
 
