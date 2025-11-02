@@ -7,7 +7,7 @@
 	- [🧑‍💻 Step 1: Clone the GitHub repository to your machine.](#step-1)
     - [🚀 Step 2: Launching the project in Unity Hub.](#step-2)
     - [📊 Step 3 \& 4, Creating a health bar and a name for the NPC.](#-step-3--4-creating-a-health-bar-and-a-name-for-the-npc)
-    - [🔫 Step 5: Weapon Selector](#️-step-5-weapon-selector)
+    - [🔫 Step 5: Weapon Selector](#-step-5-weapon-selector)
       - [Step 5.1: Start on the Weapon Selector](#step-51-start-on-the-weapon-selector)
       - [Step 5.2: Selecting NPCs](#step-52-selecting-npcs)
       - [Step 5.3: Create a Dropdown Field](#step-53-create-a-dropdown-field)
@@ -356,3 +356,4 @@ We wanna make sure we render the minimap as part of our UI, right now it's on to
 
 
 **Your final product might look similar to this:**
+![finished_minimap](images/image-10.png)
