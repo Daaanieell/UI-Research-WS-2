@@ -317,8 +317,8 @@ Links for step 5.5:
 ### 🤩 The End
 
 **Finished Product:**
-![endproduct](images/image-7.png)
 
+![endproduct](images/image-7.png)
 
 Congratulations, you've completed the tutorial!
 By now you learned how to use Unity's UI Toolkit to build both in-game and editor UI elements.
@@ -331,4 +331,29 @@ You've explored how the Editor UI can interact with objects in the Scene, and yo
 
 ### 🤓 If you got to this step before the time ran out, then here's an extra challenge for you!
 
-#### 🗺️ Step 6: Creating a minimap (using Unity UI, not UI Toolkit)
+#### 🗺️ Step 6: Creating a minimap
+##### This part of the tutorial is completely optional, only in here for fun, and it not using the UI Toolkit system, instead it's using the regular Unity UI.
+
+1. First we need a new camera which will act as our vocal point of the minimap, as it will soar in the sky, so go ahead and right click in the Hierarchy and click on 'Camera', make sure to reset the transform property on the camera.
+2. Change the transform property of the camera so it's in the sky! 
+- Recommended: 
+	- 25 on the Y-axis.
+	- 1.5 on the z-axis. (so it's centered more clearly)
+	- 90 on the rotation of the X-axis, so it's looking down.
+3. Change the projection from perspective to orthographic in the camera Inspector, this removes all perspective from the scene, it looks more flat this way.
+4. You can tweak the size value to your liking, this will change how much of the map you will see at a given moment.
+5. You can also go ahead and remove the audio listener component from the camera since it's not needed
+
+We wanna make sure we render the minimap as part of our UI, right now it's on top of everything.
+
+6. In the hierarchy, create a new object, right-click and select UI -> raw image  
+7. Now you switch to 2d mode (from the scene view, it's in the bar at the top) and click on 'f' to focus on the image.  
+8. Zoom out a bit and then drag and drop the image into a corner of your choosing, in the inspector, under rect transform you can anchor it to a corner (top right for example)and then use the Pos X and Pos Y to offset the image. If you now go back to your game scene you can see the image overlayed in your game view.  
+9. In the project files, right-click and click on 'Create' -> 'Rendering' -> 'Render Texture', this is what's used to display the camera.  
+10. You can change the size of the newly created texture to the same size as the raw image, and set 'Depth Stencil Format' to 'None'.  
+11. If you now click on the (new) camera and go to 'Output' in the inspector, you see there's an option for Output Texture, drag the newly created Render Texture in here. Now all the data from the camera is being fed into the Render Texture.  
+12. You may have already guessed it, but now we can insert the Render Texture (with the data of the camera) into the Raw Image! So go ahead and click on the Raw Image and drag the Render Texture into it in the inspector.
+
+>TODO: add picture here of end result
+
+
