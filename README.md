@@ -5,9 +5,9 @@
 ## Table of Contents
   - [Introduction](#introduction)
 	- [🧑‍💻 Step 1: Clone the GitHub repository to your machine.](#step-1)
-    - [🙆‍♂️ Step 2: Launching the project in Unity Hub.](#step-2)
-    - [💰 Step 3 \& 4, Creating a health bar and a name for the NPC.](#-step-3--4-creating-a-health-bar-and-a-name-for-the-npc)
-    - [☎️ Step 5: Weapon Selector](#️-step-5-weapon-selector)
+    - [🚀 Step 2: Launching the project in Unity Hub.](#step-2)
+    - [📊 Step 3 \& 4, Creating a health bar and a name for the NPC.](#-step-3--4-creating-a-health-bar-and-a-name-for-the-npc)
+    - [🔫 Step 5: Weapon Selector](#️-step-5-weapon-selector)
       - [Step 5.1: Start on the Weapon Selector](#step-51-start-on-the-weapon-selector)
       - [Step 5.2: Selecting NPCs](#step-52-selecting-npcs)
       - [Step 5.3: Create a Dropdown Field](#step-53-create-a-dropdown-field)
@@ -58,14 +58,14 @@ Or use your own preferred method. 💅
 
 ---
 <a id="step-2"></a>
-### 🙆‍♂️ Step 2: Launching the project in Unity Hub.
+### 🚀 Step 2: Launching the project in Unity Hub.
 Opening the project in Unity Hub.
 1. Launch Unity Hub.
 2. Click *'Add project from disk'* and select the cloned folder.
 3. After loading in make sure to load UIToolkitScene before moving on.
 
 ---
-### 💰 Step 3 & 4, Creating a health bar and a name for the NPC.
+### 📊 Step 3 & 4, Creating a health bar and a name for the NPC.
 Health bar and floating Name Tutorial.
 
 ![alt text](images/image-5.png)
@@ -86,7 +86,7 @@ Health bar and floating Name Tutorial.
 
 9. You will now have a health bar and a name above the player, good job! To get some actual logic for the health bar you will need a health bar script, it will reside in the Scripts-folder. (HealthBar.cs)
 
-
+<a id="step-5"></a>
 ### 🔫 Step 5: Weapon Selector
 In this step, you will create a Weapon Selector that allows you to change the weapon in the player's hand directly from the Scene view.
 This tool will make it easier for designers to test and adjust configurations during the development phase without needing to enter Play Mode every time.
@@ -354,6 +354,5 @@ We wanna make sure we render the minimap as part of our UI, right now it's on to
 11. If you now click on the (new) camera and go to 'Output' in the inspector, you see there's an option for Output Texture, drag the newly created Render Texture in here. Now all the data from the camera is being fed into the Render Texture.  
 12. You may have already guessed it, but now we can insert the Render Texture (with the data of the camera) into the Raw Image! So go ahead and click on the Raw Image and drag the Render Texture into it in the inspector.
 
->TODO: add picture here of end result
 
-
+**Your final product might look similar to this:**
