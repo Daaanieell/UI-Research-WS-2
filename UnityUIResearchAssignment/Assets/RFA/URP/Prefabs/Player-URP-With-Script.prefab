@@ -1333,7 +1333,7 @@ GameObject:
   - component: {fileID: 3370468605875972161}
   - component: {fileID: 6877070620101587362}
   m_Layer: 0
-  m_Name: NPC
+  m_Name: Player-URP-With-Script
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1483,8 +1483,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51216af2cca5e4c43884b1c0208ebd90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NPC
-  npcName: Placeholder
-  health: 100
+  npcName: 
+  health: 50
   maxHealth: 100
   handTransform: {fileID: 1767038885977141877}
   weaponPrefab: {fileID: 3936644519421218985, guid: fbfad3842d3cdd14f8a5e4ff729c8992, type: 3}
