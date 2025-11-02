@@ -23,8 +23,7 @@ In this workshop, you will design and build (editor) UI in Unity using UI toolki
 - A 'Weapon Selector', editor UI that allows you to change NPC stats and weapons.
 - A floating health bar and name above NPCs, this is in-game UI. 
 
-<img width="1264" height="808" alt="image" src="https://github.com/user-attachments/assets/d6f4c80a-eb96-4d61-91ca-2597c76d415b" />
-
+![wireframe_finished_product](image-3.png)
 
 ### Learning Goals
 - Getting a general understanding of UXML, USS, UI Builder and C# within UI Toolkit.
@@ -69,23 +68,30 @@ Opening the project in Unity Hub.
 ### 💰 Step 3 & 4, Creating a health bar and a name for the NPC.
 Health bar and floating Name Tutorial.
 
+![alt text](image-5.png)
+
 1. Right-Click on your 'Assets' folder, click on 'Create', click on 'UI Toolkit' and finally on UI Document. Open the created file, it should open it automatically in the UI Builder. You will know this has worked if the newly opened page says 'UI Builder' at the top!
-> TODO: Add image here (step 1)
+
+![ui_builder_startingpoint](image-4.png)
+
 2. (Still inside the UI Builder) In the Hierarchy on the left, drag a Visual Element in (which you can find in the Containers section inside the Library, under the Hierarchy) Also drag a label (under controls) in as a child of the Visual Element. Then drag a progressbar (also under controls) in as a child of the Visual Element.
 3. Rename 'Label' to 'nameLabel' and 'ProgressBar' to 'healthBar'.
 4. Click on the + sign in the Stylesheet section in the top left of your screen to create a new uss (Unity Style Sheet) and give it the same name as the UI Document.
 5. Click on the 'Add new selector...' field (under Stylesheet) to add classes, these classes can then be customized so that every progressbar looks the same. You can also add new classes by clicking on a Visual Element in the Hiearchy and then click on 'Add Style Class To List' under the Stylesheet on the right side of your screen in the Inspector.
 6. You can now design the health bar and give it name you prefer, you can even design it by opening up the uss-file inside your editor of choice and edit it there. (like CSS)
 7. After you're satisfied with your work on the beautiful health bar you have created, right-click in your Assets folder, click on 'Create', click on 'UI Toolkit' and finally on 'Panel Setting Asset', inside the inspector, under 'Render Mode' choose 'World Space'.
-8. Now add an empty GameObject to the NPC, right-click on the newly create GameObject and click on Add Component, click on UI Document. Now you can add the Panel Settings the UXML file. Afterwards a new panel will appear under the fields, here in Size Mode you set it to Dynamic.
-> TODO: Add image here (step 8)
-9. You will now have a health bar and a name above the player, good job! To get some actual logic for the health bar you will need a health bar script, it will reside in the Assets -> Scripts folder. (HealthBar.cs)
+8. Now add an empty GameObject to the NPC, right-click on the newly created GameObject and click on 'Add Component', click on UI Document. Now you can add the Panel Settings to the UXML file. Afterwards a new panel will appear, set Size Mode to Dynamic.
+
+![UI_document_panel_settings](image-9.png)
+
+9. You will now have a health bar and a name above the player, good job! To get some actual logic for the health bar you will need a health bar script, it will reside in the Scripts-folder. (HealthBar.cs)
 
 
-### ☎️ Step 5: Weapon Selector
+### 🔫 Step 5: Weapon Selector
 In this step, you will create a Weapon Selector that allows you to change the weapon in the player's hand directly from the Scene view.
 This tool will make it easier for designers to test and adjust configurations during the development phase without needing to enter Play Mode every time.
-> TODO: Add wireframe image
+
+![weapon_selector_wireframe](image.png)
 
 #### Step 5.1: Start on the Weapon Selector
 
@@ -99,11 +105,9 @@ In this step you will be creating your first Visual Element, a title for the "We
 
 **Method 1: Using the UI Builder**
 1. It's time to create an Editor Window! Right-click on your 'Assets' folder, click on 'Create', click on 'UI Toolkit' and finally on 'Editor Window'. 
-2. Open the UI Builder once more by double-clicking on your UXML-document.
+2. Open the UI Builder once more by double-clicking on your .UXML-document.
 
-
-> TODO: Fix this image please!!
-![[506619646-86926ca6-65b3-41d3-9ec5-b3be8e7cd2ff.png]]
+![ui-builder_file_highlighted](image-1.png)
 
 4. Using the UI Builder window, navigate to the 'Library' section and search for a label.
 5. Drag the Label to the canvas and give it a name, e.g. 'WeaponSelector'.
@@ -118,9 +122,7 @@ You can change the properties of this label using the **'Inspector'** window in 
 	- Add your own styling within the .USS file, e.g.: `.my-title { font-size: 15px; color: blue; }`
 
 Your end result should look something like this:
-
-> TODO: Fix this image please!!
-![[506620557-51d6da6d-c693-4491-aba6-32c09fc776d1.png]]
+![editor_window_basic_preview](image-2.png)
 
 
 #### Step 5.2: Selecting NPCs
@@ -129,21 +131,22 @@ Requirements: NPCHelper.cs
 
 The field itself is created and managed by the helper class NPCHelper, which keeps your editor code clean and modular.
 
-- Open WeaponGridMain.cs and locate the CreateGUI() method
-- Inside this method, initialize the npcHelper class and add the following code:
+1. Open MainEditor.cs and locate the CreateGUI() method
+2. Inside this method, initialize the npcHelper class and add the following code:
 
 ```c#
 ObjectField npcField = npcHelper.NPCObjField();
-npcField.RegisterValueChangedCallback(evt =>
-{
-        selectedNPC = evt.newValue as NPC;
-        RefreshFields();
-});
-root.Add(npcField);
+        npcField.RegisterValueChangedCallback(evt =>
+        {
+            selectedNPC = evt.newValue as NPC;
+
+            RefreshFields();
+        });
+        weaponSelectorContainer.Add(npcField);
 ```
 
-- When you open your Editor Window in Unity (click on Tools at the top of your screen then on WeaponGridMain) you’ll now see a field labeled 'Select NPC' at the top.
-- Drag and drop or choose an NPC GameObject from your scene into this field. (If you want more NPCs you can look inside the prefab folder, our NPC resides inside RFA -> URP -> Prefabs)
+3. When you open your Editor Window in Unity (click on Tools at the top of your screen then on MainEditor) you’ll now see a field labeled 'Select NPC' at the top.
+4. Drag and drop or choose an NPC GameObject from your scene into this field. (If you want more NPCs you can look inside the prefab folder, our NPC resides inside RFA -> URP -> Prefabs)
 
 
 
@@ -158,12 +161,11 @@ This step explains how to add a **DropdownField** in UI Toolkit and make it filt
    - In the **UXML** file, make sure the `DropdownField` is visible in your layout and has a unique name (e.g., `WeaponDropDown`).
 
 3. **Reference the Dropdown in Code** 
-   - Inside the `CreateGUI()` method, get your dropdown from the UXML:
-     [If you're curious about the Q method](https://docs.unity3d.com/2020.1/Documentation/ScriptReference/UIElements.UQueryExtensions.Q.html)
+   - Inside the `CreateGUI()` method in the MainEditor.cs file, get your dropdown from the UXML:
+     ([if you're curious about the Q method](https://docs.unity3d.com/2020.1/Documentation/ScriptReference/UIElements.UQueryExtensions.Q.html))
      ```csharp
      typeDropdown = visualTree.Q<DropdownField>("WeaponDropDown");
      ```
-     >TODO: Add which file we are in right now!
 
 4. **Assign Choices to the Dropdown**
    - Use `typeDropdown.choices` to add a new list of weapon types:
@@ -197,15 +199,11 @@ This step explains how to add a **DropdownField** in UI Toolkit and make it filt
    - In your `FilterWeaponType()` method (which resides in the WeaponGrid file), reference the dropdown’s value and check if it’s not `"All"`.
    - You can use a lambda function that selects only the weapons that match the dropdown value:
      ```csharp
-     if (selectedType != "All")
-         filteredWeapons = weapons.FindAll(w => w.weaponType.ToString() == selectedType);
+     if (selectedWeaponType.value != "All")
+         filteredWeapons = weapons.FindAll(w => w.weaponType.ToString() == selectedWeaponType.value);
      ```
 
-8. **Return and Display the Filtered List**
-   - Save the filtered list in a new `List<Weapon>` and return it to be displayed.
-   - Pass the returned list into your loop that creates the weapon items in the grid.
-
-9. **Test the Dropdown**
+8. **Test the Dropdown**
     - When you open your editor window:
       - `"All"` should be selected by default and display every weapon.
       - Selecting `"Melee"`, `"Ranged"`, or `"Magic"` should instantly update the grid to show only that weapon type.
@@ -295,9 +293,7 @@ Within the WeaponGrid class:
 
 Your weapongrid is now finished and should look like this:
 
-<img width="409" height="861" alt="image" src="https://github.com/user-attachments/assets/b88a789a-a287-4766-af24-18459d3ce974" />
-
-
+![finished_weapongrid](image-8.png)
 
 #### Step 5.5: Changing weapons and Statistics
 Links for step 5.5:
@@ -306,13 +302,13 @@ Links for step 5.5:
 
 **Requirements: NPC class, RefreshFields and RefreshHealthBarAndScene methods**
 
-1. Go to WeaponGridMain.cs and add a new VisuelElement to the CreateGUI method (e.g. NPCEditorContainer)
+1. Go to MainEditor.cs and add a new VisuelElement to the CreateGUI method (e.g. NPCEditorContainer)
 2. Now you can start creating the fields for all attributes, this works exactly the same as in step 5.4, so just try it out for yourself!
 3. Don't forget that nameField, healthField and maxHealthField are not ObjectFields
 4. Use Mathf.Max for the healthField and Mathf.Clamp for the maxHealthField
 5. After initializing healthField, add 'healthField.isDelayed = false;' (this makes it work better).
 6. Add healthField.SetValueWithoutNotify(selectedNPC.Health); to the end of the maxHealthField
-7. Add the your container to root
+7. Add the container to root
 8. To change weapons, create a new method called 'EquipWeapon' in NPCHelper.cs (use the functions of NPC.cs)
 9.  Now open WeaponGrid.cs and modify the method 'GenerateItemElement',  try calling the newly created method when an item is clicked
 
@@ -320,7 +316,9 @@ Links for step 5.5:
 
 ### 🤩 The End
 
-> TODO: Add lil picture here
+**Finished Product:**
+![endproduct](image-7.png)
+
 
 Congratulations, you've completed the tutorial!
 By now you learned how to use Unity's UI Toolkit to build both in-game and editor UI elements.
@@ -331,6 +329,6 @@ You've explored how the Editor UI can interact with objects in the Scene, and yo
 - A Health Bar and Floating Name displayed above your player which appears in-game and are changeable through the inspector.
 - A functional Weapon Selector built with the Editor UI that filters weapons based on weapon type.
 
-### 🤓 If you somehow got to this step before the time ran out, then here's an extra challenge for you!
+### 🤓 If you got to this step before the time ran out, then here's an extra challenge for you!
 
-#### 🗺️ Step 6: Creating a minimap
+#### 🗺️ Step 6: Creating a minimap (using Unity UI, not UI Toolkit)
