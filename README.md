@@ -23,7 +23,7 @@ In this workshop, you will design and build (editor) UI in Unity using UI toolki
 - A 'Weapon Selector', editor UI that allows you to change NPC stats and weapons.
 - A floating health bar and name above NPCs, this is in-game UI. 
 
-![wireframe_finished_product](image-3.png)
+![wireframe_finished_product](images/image-3.png)
 
 ### Learning Goals
 - Getting a general understanding of UXML, USS, UI Builder and C# within UI Toolkit.
@@ -68,11 +68,11 @@ Opening the project in Unity Hub.
 ### 💰 Step 3 & 4, Creating a health bar and a name for the NPC.
 Health bar and floating Name Tutorial.
 
-![alt text](image-5.png)
+![alt text](images/image-5.png)
 
 1. Right-Click on your 'Assets' folder, click on 'Create', click on 'UI Toolkit' and finally on UI Document. Open the created file, it should open it automatically in the UI Builder. You will know this has worked if the newly opened page says 'UI Builder' at the top!
 
-![ui_builder_startingpoint](image-4.png)
+![ui_builder_startingpoint](images/image-4.png)
 
 2. (Still inside the UI Builder) In the Hierarchy on the left, drag a Visual Element in (which you can find in the Containers section inside the Library, under the Hierarchy) Also drag a label (under controls) in as a child of the Visual Element. Then drag a progressbar (also under controls) in as a child of the Visual Element.
 3. Rename 'Label' to 'nameLabel' and 'ProgressBar' to 'healthBar'.
@@ -82,7 +82,7 @@ Health bar and floating Name Tutorial.
 7. After you're satisfied with your work on the beautiful health bar you have created, right-click in your Assets folder, click on 'Create', click on 'UI Toolkit' and finally on 'Panel Setting Asset', inside the inspector, under 'Render Mode' choose 'World Space'.
 8. Now add an empty GameObject to the NPC, right-click on the newly created GameObject and click on 'Add Component', click on UI Document. Now you can add the Panel Settings to the UXML file. Afterwards a new panel will appear, set Size Mode to Dynamic.
 
-![UI_document_panel_settings](image-9.png)
+![UI_document_panel_settings](images/image-9.png)
 
 9. You will now have a health bar and a name above the player, good job! To get some actual logic for the health bar you will need a health bar script, it will reside in the Scripts-folder. (HealthBar.cs)
 
@@ -91,7 +91,7 @@ Health bar and floating Name Tutorial.
 In this step, you will create a Weapon Selector that allows you to change the weapon in the player's hand directly from the Scene view.
 This tool will make it easier for designers to test and adjust configurations during the development phase without needing to enter Play Mode every time.
 
-![weapon_selector_wireframe](image.png)
+![weapon_selector_wireframe](images/image.png)
 
 #### Step 5.1: Start on the Weapon Selector
 
@@ -107,7 +107,7 @@ In this step you will be creating your first Visual Element, a title for the "We
 1. It's time to create an Editor Window! Right-click on your 'Assets' folder, click on 'Create', click on 'UI Toolkit' and finally on 'Editor Window'. 
 2. Open the UI Builder once more by double-clicking on your .UXML-document.
 
-![ui-builder_file_highlighted](image-1.png)
+![ui-builder_file_highlighted](images/image-1.png)
 
 4. Using the UI Builder window, navigate to the 'Library' section and search for a label.
 5. Drag the Label to the canvas and give it a name, e.g. 'WeaponSelector'.
@@ -122,7 +122,7 @@ You can change the properties of this label using the **'Inspector'** window in 
 	- Add your own styling within the .USS file, e.g.: `.my-title { font-size: 15px; color: blue; }`
 
 Your end result should look something like this:
-![editor_window_basic_preview](image-2.png)
+![editor_window_basic_preview](images/image-2.png)
 
 
 #### Step 5.2: Selecting NPCs
@@ -293,7 +293,7 @@ Within the WeaponGrid class:
 
 Your weapongrid is now finished and should look like this:
 
-![finished_weapongrid](image-8.png)
+![finished_weapongrid](images/image-8.png)
 
 #### Step 5.5: Changing weapons and Statistics
 Links for step 5.5:
@@ -317,7 +317,7 @@ Links for step 5.5:
 ### 🤩 The End
 
 **Finished Product:**
-![endproduct](image-7.png)
+![endproduct](images/image-7.png)
 
 
 Congratulations, you've completed the tutorial!
