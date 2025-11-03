@@ -261,7 +261,7 @@ public class WeaponGrid {
   ```
 
 - Now use the `LoadAllWeapons()` function from the WeaponLoaderManager class to get all the weapons and add them to the list.
-- Using parameters, pass the list to the `GridMaker()` function and have each item in the grid contain an image and the name of the weapon.
+- Using parameters, pass the list to the `FillWeaponGrid()` function and have each item in the grid contain an image and the name of the weapon.
   > Note: images can be loaded using the `loadImageForWeapon()` function
 - To add text and images to a VisualElement, you can create a new VisualElement in your C# script and then add the VisualElement to another using the `VisualElement.Add(VisualElement)`.
 
@@ -286,15 +286,15 @@ USS file:
 
 #### Selecting and equipping a weapon
 
-To equip a weapon on an NPC, you need to add the Weapon Scriptable Object. Using the `SetWeaponPrefab()` and `RefreshWeapon()` functions from the NPC script, a weapon can be equipped.
+To equip a weapon on an NPC, you need to pass the Weapon Scriptable Object to the NPC script. 
 
-Using these functions within the item's OnClick event, you can make the (grid-)item select a weapon and equip it on the NPC.
+1. Within the NPCHelper.cs, create a function called: `EquipWeapon()`.
+2. The `EquipWeapon()` method should call the following functions on the selected npc:
+	- SetWeaponPrefab() (from NPC.cs)
+	- RefreshWeapon() (from NPC.cs)
 
-Within the WeaponGrid class:
+You should now be able to equip a weapon on an NPC.
 
-- Find the weapons OnClick event within the given code.
-- Use the `SetWeaponPrefab()` function to set the weapon prefab.
-- Use the `RefreshWeapon()` function to refresh the weapon on the NPC.
 #### The end result
 
 Your weapongrid is now finished and should look like this:
