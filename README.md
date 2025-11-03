@@ -161,22 +161,17 @@ ObjectField npcField = npcHelper.NPCObjField();
 
 #### Step 5.3: Create a Dropdown Field
 
-This step explains how to add a **DropdownField** in UI Toolkit and make it filter through a list of weapons in your custom Unity Editor Window.
+This step explains how to use a **DropdownField** in UI Toolkit and make it filter through a list of weapons in your custom Unity Editor Window.
+> note: You should already have a DropdownField in your UI, you only need to add functionality to it.
 
-1. **Add a Dropdown Field**
-   - In (the same as in step 5.1) **UI Builder**, go to the **Library**, search for `DropdownField` (under controls), and add it to your visual element in the Hierarchy.
-
-2. **Make the Dropdown Visible**
-   - In the **UXML** file, make sure the `DropdownField` is visible in your layout and has a unique name (e.g., `WeaponDropDown`).
-
-3. **Reference the Dropdown in Code** 
+1. **Reference the Dropdown in Code** 
    - Inside the `CreateGUI()` method in the MainEditor.cs file, get your dropdown from the UXML:
      ([if you're curious about the Q method](https://docs.unity3d.com/2020.1/Documentation/ScriptReference/UIElements.UQueryExtensions.Q.html))
      ```csharp
      typeDropdown = visualTree.Q<DropdownField>("WeaponDropDown");
      ```
 
-4. **Assign Choices to the Dropdown**
+2. **Assign Choices to the Dropdown**
    - Use `typeDropdown.choices` to add a new list of weapon types:
      ```csharp
      typeDropdown.choices = new List<string> { "All", "Melee", "Ranged", "Magic" };
@@ -186,7 +181,7 @@ This step explains how to add a **DropdownField** in UI Toolkit and make it filt
      typeDropdown.value = "All";
      ```
 
-5. **Register the Value Change Event**
+3. **Register the Value Change Event**
    - To refresh your editor window when the selection changes, use:
      ```csharp
      typeDropdown.RegisterValueChangedCallback(evt =>
@@ -197,14 +192,14 @@ This step explains how to add a **DropdownField** in UI Toolkit and make it filt
      });
      ```
 
-6. **Render the Initial Grid**
+4. **Render the Initial Grid**
    - When the editor window opens, build the grid once so that all weapons are shown:
      ```csharp
      grid.Clear();
      grid.Add(Wg.FillWeaponGrid(allWeapons, typeDropdown));
      ```
 
-7. **Filter Weapons by Dropdown Value**
+5. **Filter Weapons by Dropdown Value**
    - In your `FilterWeaponType()` method (which resides in the WeaponGrid file), reference the dropdown’s value and check if it’s not `"All"`.
    - You can use a lambda function that selects only the weapons that match the dropdown value:
      ```csharp
@@ -212,7 +207,7 @@ This step explains how to add a **DropdownField** in UI Toolkit and make it filt
          filteredWeapons = weapons.FindAll(w => w.weaponType.ToString() == selectedWeaponType.value);
      ```
 
-8. **Test the Dropdown**
+6. **Test the Dropdown**
     - When you open your editor window:
       - `"All"` should be selected by default and display every weapon.
       - Selecting `"Melee"`, `"Ranged"`, or `"Magic"` should instantly update the grid to show only that weapon type.
