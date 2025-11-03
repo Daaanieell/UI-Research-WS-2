@@ -84,12 +84,12 @@ Health bar and floating Name Tutorial.
 
 ![UI_document_panel_settings](images/image-9.png)
 
-9. You will now have a health bar and a name above the player, good job! To get some actual logic for the health bar you will need a health bar script, it will reside in the Scripts-folder. (HealthBar.cs)
+9. You will now have a health bar and a name above the NPC, good job! To get some actual logic for the health bar you will need a health bar script, it will reside in the Scripts-folder. (HealthBar.cs)
 
 <a id="step-5"></a>
 ### 🔫 Step 5: Weapon Selector
-In this step, you will create a Weapon Selector that allows you to change the weapon in the player's hand directly from the Scene view.
-This tool will make it easier for designers to test and adjust configurations during the development phase without needing to enter Play Mode every time.
+In this step, you will create a Weapon Selector that allows you to change the weapon in the NPC's hand directly from the Scene view.
+This tool will make it easier for designers to test and adjust configurations during the development phase.
 
 ![weapon_selector_wireframe](images/image.png)
 
@@ -326,7 +326,7 @@ You've explored how the Editor UI can interact with objects in the Scene, and yo
 
 ### At this point you should have:
 
-- A Health Bar and Floating Name displayed above your player which appears in-game and are changeable through the inspector.
+- A Health Bar and Floating Name displayed above your NPC which appears in-game and are changeable through the inspector.
 - A functional Weapon Selector built with the Editor UI that filters weapons based on weapon type.
 
 ### 🤓 If you got to this step before the time ran out, then here's an extra challenge for you!
