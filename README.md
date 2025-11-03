@@ -209,8 +209,10 @@ This step explains how to use a **DropdownField** in UI Toolkit and make it filt
 
 6. **Test the Dropdown**
     - When you open your editor window:
-      - `"All"` should be selected by default and display every weapon.
-      - Selecting `"Melee"`, `"Ranged"`, or `"Magic"` should instantly update the grid to show only that weapon type.
+      - `"All"` should be selected by default.
+      - There should be options for selecting `"Melee"`, `"Ranged"`, or `"Magic"`.
+     
+You should now have a dropdown with options for:  `"Melee"`, `"Ranged"`, or `"Magic"`. Displaying and integration with the grid will be done in the next step.
 
 
 #### Step 5.4: Weapon Grid
