@@ -51,7 +51,7 @@ public class MainEditor : EditorWindow
         root.Add(uxmlContent);
 
         // STEP 5.3
-        // TODO: Follow bullet point 3 here
+        // TODO: Follow bullet point 1 here
 
         var grid = uxmlContent.Q<ScrollView>("grid");
 
@@ -71,9 +71,9 @@ public class MainEditor : EditorWindow
         #region
 
         // STEP 5.3
+        // TODO: Follow bullet point 2 here
+        // TODO: Follow bullet point 3 here
         // TODO: Follow bullet point 4 here
-        // TODO: Follow bullet point 5 here
-        // TODO: Follow bullet point 6 here
 
         // STEP 5.5
         // TODO: Add fields for:

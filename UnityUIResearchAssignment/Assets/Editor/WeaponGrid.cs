@@ -92,7 +92,7 @@ public class WeaponGrid
         var filteredWeapons = weapons;
 
         // STEP 5.3
-        // TODO: Follow bullet point 7 here
+        // TODO: Follow bullet point 5 here
 
         return filteredWeapons;
     }
