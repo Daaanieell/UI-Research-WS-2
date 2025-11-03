@@ -324,7 +324,7 @@ Links for step 5.5:
 
 **Finished Product:**
 
-![endproduct](images/image-7.png)
+<img width="1361" height="775" alt="image" src="https://github.com/user-attachments/assets/e5e1d707-afbd-4b8f-a467-9ee936b0eb73" />
 
 Congratulations, you've completed the tutorial!
 By now you learned how to use Unity's UI Toolkit to build both in-game and editor UI elements.
