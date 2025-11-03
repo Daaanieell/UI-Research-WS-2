@@ -1,6 +1,7 @@
 # 🧙‍♂️ Unity Editor UI Workshop
 
 ## Each step has a matching solution branch. If you’re stuck, you can move to the branch corresponding with the step to continue working.
+> e.g. Stuck on step 5.1? Open the branch `steps/5.1` to see the answer!
 
 ## Table of Contents
   - [Introduction](#introduction)
