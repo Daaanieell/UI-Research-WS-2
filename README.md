@@ -104,10 +104,14 @@ In this step you will be creating your first Visual Element, a title for the "We
 2. Opening the UXML file inside your preferred editor, which allows for more control over each element.
 
 **Method 1: Using the UI Builder**
-1. It's time to create an Editor Window! Right-click on your 'Assets' folder, click on 'Create', click on 'UI Toolkit' and finally on 'Editor Window'. 
-2. Open the UI Builder once more by double-clicking on your .UXML-document.
+1. It's time to create an Editor Window! Right-click on your 'Assets' folder, click on 'Create', click on 'UI Toolkit' and finally on 'Editor Window'.
+2. Open the generated C# file and change the `[MenuItem(".../...")]` attribute to: "Tools/WeaponSelector". This changes where your custom UI is located.
+	
+	<img width="967" height="162" alt="image" src="https://github.com/user-attachments/assets/5a8388d1-4152-483b-8426-a9bc729689d5" />
 
-![ui-builder_file_highlighted](images/image-1.png)
+3. Open the UI Builder once more by double-clicking on your .UXML-document.
+
+	![ui-builder_file_highlighted](images/image-1.png)
 
 4. Using the UI Builder window, navigate to the 'Library' section and search for a label.
 5. Drag the Label to the canvas and give it a name, e.g. 'WeaponSelector'.
@@ -115,10 +119,14 @@ In this step you will be creating your first Visual Element, a title for the "We
 You can change the properties of this label using the **'Inspector'** window in the UI Builder on the right side of your screen.
 
 **Method 2: Editing through the use of the UXML file**
-1. Right-click on your 'Assets' folder, click on 'Create', click on 'UI Toolkit' and finally on 'Editor Window'. 
-2. Open the .UXML file with your preferred editor. (You can do so by clicking on the arrow of the UXML file, a stylesheet file will pop out and once double-clicked, it will open the actual UXML-file)
-3. Add the following: `<ui:Label class="my-title" text="Weapon Selector" />`
-4. Open the .USS file with your preferred editor.
+1. Right-click on your 'Assets' folder, click on 'Create', click on 'UI Toolkit' and finally on 'Editor Window'.
+2. Open the generated C# file and change the `[MenuItem(".../...")]` attribute to: "Tools/WeaponSelector". This changes where your custom UI is located.
+	
+	<img width="967" height="162" alt="image" src="https://github.com/user-attachments/assets/5a8388d1-4152-483b-8426-a9bc729689d5" />
+
+3. Open the .UXML file with your preferred editor. (You can do so by clicking on the arrow of the UXML file, a stylesheet file will pop out and once double-clicked, it will open the actual UXML-file)
+4. Add the following: `<ui:Label class="my-title" text="Weapon Selector" />`
+5. Open the .USS file with your preferred editor.
 	- Add your own styling within the .USS file, e.g.: `.my-title { font-size: 15px; color: blue; }`
 
 Your end result should look something like this:
