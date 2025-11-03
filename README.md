@@ -68,7 +68,7 @@ Opening the project in Unity Hub.
 ### 📊 Step 3 & 4, Creating a health bar and a name for the NPC.
 Health bar and floating Name Tutorial.
 
-![alt text](images/image-5.png)
+![alt text](images/image-6.png)
 
 1. Right-Click on your 'Assets' folder, click on 'Create', click on 'UI Toolkit' and finally on UI Document. Open the created file, it should open it automatically in the UI Builder. You will know this has worked if the newly opened page says 'UI Builder' at the top!
 
