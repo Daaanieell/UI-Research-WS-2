@@ -13,7 +13,7 @@ public class WeaponGrid
 
     private NPCHelper npcHelper;
 
-    
+
     private WeaponLoaderManager wlm = new WeaponLoaderManager();
 
     public WeaponGrid(NPCHelper npcHelper)
@@ -21,13 +21,13 @@ public class WeaponGrid
         this.npcHelper = npcHelper;
     }
 
-    public VisualElement FillWeaponGrid(List<Weapon> weapons,DropdownField typeDropdown)
+    public VisualElement FillWeaponGrid(List<Weapon> weapons, DropdownField typeDropdown)
     {
-        List<Weapon> filteredWeapons = filterWeaponType(weapons,typeDropdown);
+        List<Weapon> filteredWeapons = filterWeaponType(weapons, typeDropdown);
 
         if (weapons == null || weapons.Count == 0) return ShowNoWeaponMessage();
         if (filteredWeapons.Count == 0) return ShowNoWeaponMessage();
-        
+
         VisualElement gridContainer = new VisualElement();
         gridContainer.AddToClassList("weapon-grid");
 
@@ -61,14 +61,8 @@ public class WeaponGrid
         item.AddManipulator(new Clickable(() =>
         {
             Debug.Log("clicked on: " + currentWeapon.weaponName);
+            npcHelper.EquipWeapon(currentWeapon);
 
-            // STEP 5.5 
-            // ------------------------- ONLY CHANGE CODE IN HERE -------------------------  
-
-            // TODO: Create an NPCHelper method to equip weapons! 
-            
-            // ------------------------- ONLY CHANGE CODE IN HERE -------------------------  
-            
         }));
 
         wlm.LoadWeaponImage(currentWeapon, item);
@@ -91,7 +85,7 @@ public class WeaponGrid
     }
 
     private List<Weapon> filterWeaponType(List<Weapon> weapons, DropdownField selectedWeaponType)
-    {       
+    {
         count = 0;
         var filteredWeapons = weapons;
         if (selectedWeaponType.value != "All")
@@ -99,5 +93,5 @@ public class WeaponGrid
 
         return filteredWeapons;
     }
-    
+
 }

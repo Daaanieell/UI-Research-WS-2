@@ -21,8 +21,12 @@ public class NPCHelper
         return selectedNPC;
     }
 
-    // STEP 5.5
-    // public void EquipWeapon(Weapon currentWeapon)
+    public void EquipWeapon(Weapon currentWeapon)
+    {
+        selectedNPC.SetWeaponPrefab(currentWeapon.weaponPrefab);
+        selectedNPC.RefreshWeapon();
+    }
+
 
     public ObjectField NPCObjField()
     {
