@@ -362,4 +362,4 @@ We wanna make sure we render the minimap as part of our UI, right now it's on to
 
 
 **Your final product might look similar to this:**
-![finished minimap](image-10.png)
+![finished minimap](images/image-10.png)
