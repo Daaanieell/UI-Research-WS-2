@@ -1,8 +1,9 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/Editor/WeaponGrid/WeaponGrid.uss?fileID=7433441132597879392&amp;guid=b5f7e0908d9a7d24e9beccf0c21a153b&amp;type=3#WeaponGrid" />
     <ui:VisualElement name= "Weapon Selector" class="weapon-selector">
-        <ui:Label text="Weapon Selector" name="WeaponSelector" class="weapon-selector-Label" />
-        <ui:DropdownField label="Weapon drop down" name="WeaponDropDown"/>
+
+        <!-- ::TODO 5.1  -->
+        
     <ui:ScrollView name="grid" class="grid"/>
     </ui:VisualElement>
     
