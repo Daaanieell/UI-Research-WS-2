@@ -85,7 +85,8 @@ Health bar and floating Name Tutorial.
 
 ![UI_document_panel_settings](images/image-9.png)
 
-9. You will now have a health bar and a name above the NPC, good job! To get some actual logic for the health bar you will need a health bar script, it will reside in the Scripts-folder. (HealthBar.cs)
+9. On the empty gameobject within your NPC, add the HealthBar.cs script and select the NPC.
+10. You will now have a health bar and a name above the NPC, good job!
 
 <a id="step-5"></a>
 ### 🔫 Step 5: Weapon Selector
