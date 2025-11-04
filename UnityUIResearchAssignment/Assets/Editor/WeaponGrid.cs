@@ -13,9 +13,6 @@ public class WeaponGrid
 
     private NPCHelper npcHelper;
 
-    // STEP 5.4
-    // TODO: Use the WeaponLoaderManager to load all weapon SO's
-
     public VisualElement FillWeaponGrid(List<Weapon> weapons,DropdownField typeDropdown)
     {
         List<Weapon> filteredWeapons = filterWeaponType(weapons,typeDropdown);
