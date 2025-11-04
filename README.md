@@ -105,30 +105,39 @@ In this step you will be creating your first Visual Element, a title for the "We
 1. Using the UI Builder, which is best for static elements in your UI.
 2. Opening the UXML file inside your preferred editor, which allows for more control over each element.
 
-**Method 1: Using the UI Builder**
-1. It's time to create an Editor Window! Right-click on your 'Assets' folder, click on 'Create', click on 'UI Toolkit' and finally on 'Editor Window'.
-2. Open the generated C# file and change the `[MenuItem(".../...")]` attribute to: "Tools/WeaponSelector". This changes where your custom UI is located.
+ * Normally, you would generate a new Editor Window script by right-clicking on your **‘Assets’** folder, selecting **Create → UI Toolkit → Editor Window**.  
+ * This automatically creates both a C# script and a matching UXML file for your custom editor UI.
+ * In this workshop, however, you don’t need to create a new one — the project already includes an editor script named **`MainEditor.cs`** inside the **`Editor`** folder.
+
+ * Open **`MainEditor.cs`** and check the `[MenuItem(".../...")]` attribute at the top. Change it to:
+
+   ```csharp
+   [MenuItem("Tools/WeaponSelector")]
+   ```
 	
 	<img width="967" height="162" alt="image" src="https://github.com/user-attachments/assets/5a8388d1-4152-483b-8426-a9bc729689d5" />
 
-3. Open the UI Builder once more by double-clicking on your .UXML-document.
+**Method 1: Using the UI Builder**
+
+1. Open the UI Builder once more by double-clicking on your .UXML-document.
 
 	![ui-builder_file_highlighted](images/image-1.png)
 
-4. Using the UI Builder window, navigate to the 'Library' section and search for a label.
-5. Drag the Label to the canvas and give it a name, e.g. 'WeaponSelector'.
+2. Using the UI Builder window, navigate to the 'Library' section and search for a label.
+3. Drag the Label to the canvas and give it a name, e.g. 'WeaponSelector'.
 
 You can change the properties of this label using the **'Inspector'** window in the UI Builder on the right side of your screen.
 
-**Method 2: Editing through the use of the UXML file**
-1. Right-click on your 'Assets' folder, click on 'Create', click on 'UI Toolkit' and finally on 'Editor Window'.
-2. Open the generated C# file and change the `[MenuItem(".../...")]` attribute to: "Tools/WeaponSelector". This changes where your custom UI is located.
-	
-	<img width="967" height="162" alt="image" src="https://github.com/user-attachments/assets/5a8388d1-4152-483b-8426-a9bc729689d5" />
+**Method 2: Editing through the UXML file**
 
-3. Open the .UXML file with your preferred editor. (You can do so by clicking on the arrow of the UXML file, a stylesheet file will pop out and once double-clicked, it will open the actual UXML-file)
-4. Add the following: `<ui:Label class="my-title" text="Weapon Selector" />`
-5. Open the .USS file with your preferred editor.
+1. Open the `.UXML` file in your preferred text editor.  
+   *(You can do so by clicking on the arrow of the UXML file, a stylesheet file will pop out and once double-clicked, it will open the actual UXML-file)*
+
+2. Inside the root element of the file, add the following line:  
+   ```xml
+   <ui:Label class="my-title" text="Weapon Selector" />
+   ```
+3. Open the .USS file with your preferred editor.
 	- Add your own styling within the .USS file, e.g.: `.my-title { font-size: 15px; color: blue; }`
 
 Your end result should look something like this:
@@ -183,6 +192,8 @@ This step explains how to use a **DropdownField** in UI Toolkit and make it filt
      ```
 
 3. **Register the Value Change Event**
+*(note:  Wg.FillWeaponGrid is found in WeaponGrid class in the editor folder)*
+
    - To refresh your editor window when the selection changes, use:
      ```csharp
      typeDropdown.RegisterValueChangedCallback(evt =>
@@ -193,14 +204,14 @@ This step explains how to use a **DropdownField** in UI Toolkit and make it filt
      });
      ```
 
-4. **Render the Initial Grid**
+5. **Render the Initial Grid**
    - When the editor window opens, build the grid once so that all weapons are shown:
      ```csharp
      grid.Clear();
      grid.Add(Wg.FillWeaponGrid(allWeapons, typeDropdown));
      ```
 
-5. **Filter Weapons by Dropdown Value**
+6. **Filter Weapons by Dropdown Value**
    - In your `FilterWeaponType()` method (which resides in the WeaponGrid file), reference the dropdown’s value and check if it’s not `"All"`.
    - You can use a lambda function that selects only the weapons that match the dropdown value:
      ```csharp
@@ -208,7 +219,7 @@ This step explains how to use a **DropdownField** in UI Toolkit and make it filt
          filteredWeapons = weapons.FindAll(w => w.weaponType.ToString() == selectedWeaponType.value);
      ```
 
-6. **Test the Dropdown**
+7. **Test the Dropdown**
     - When you open your editor window:
       - `"All"` should be selected by default.
       - There should be options for selecting `"Melee"`, `"Ranged"`, or `"Magic"`.
