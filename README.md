@@ -220,8 +220,8 @@ You should now have a dropdown with options for:  `"Melee"`, `"Ranged"`, or `"Ma
 The weapon grid displays all the weapons an NPC can equip.
 
 It currently lacks:
-1. The ability to load weapons into the grid (use the given WeaponLoader script)
-2. Styling (use the .USS file)
+. The ability to load weapons into the grid (use the given WeaponLoader script)
+1. Styling (use the .USS file)
 3. Ability to select/equip a weapon
 
 **Pseudo code overview**
@@ -254,16 +254,12 @@ public class WeaponGrid {
 ```
 
 #### Loading weapons
-- To load weapons you first need to create a `List<>` of the Weapon Scriptable Object (given to you). You can store this list inside the main script.
-  Example:
-  ```C#
-  List<Weapon> = new List<Weapon>();
-  ```
+> Note: Weapons are already being loaded, this was done in the previous step.
 
-- Now use the `LoadAllWeapons()` function from the WeaponLoaderManager class to get all the weapons and add them to the list.
-- Using parameters, pass the list to the `FillWeaponGrid()` function and have each item in the grid contain an image and the name of the weapon.
-  > Note: images can be loaded using the `loadImageForWeapon()` function
-- To add text and images to a VisualElement, you can create a new VisualElement in your C# script and then add the VisualElement to another using the `VisualElement.Add(VisualElement)`.
+The weapons now need an image and a name to be loaded:
+- Images can be loaded using the `loadImageForWeapon()` function
+- Add the weapon name to the item
+	- Note: To add text and images to a VisualElement, you can create a new VisualElement in your C# script and then add the VisualElement to another using the `VisualElement.Add(VisualElement)`.
 
 You should now have a weapon grid that dynamically loads weapons.
 
