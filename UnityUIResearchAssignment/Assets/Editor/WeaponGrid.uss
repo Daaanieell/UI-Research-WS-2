@@ -1,0 +1,50 @@
+.grid {
+    /* STEP 5.4: Add styling here */
+}
+
+.grid-row {
+    /* STEP 5.4: Add styling here */
+}
+
+.grid-item {
+    /* STEP 5.4: Add styling here */
+}
+
+.grid-item > .unity-label {
+    /* STEP 5.4: Add styling here */
+}
+
+.grid-item > .unity-image {
+    /* STEP 5.4: Add styling here */
+}
+
+/* DO NOT CHANGE VVV */
+.warning-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 250px;
+    height: 50px;
+}
+
+.no-weapon-warning {
+    opacity: 0.8;
+}
+
+.weapon-selector {
+
+    display: flex;
+    flex-direction: column;
+    margin-top:20px;
+    margin-bottom: auto;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.weapon-selector-Label{
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 30px;
+    color: aqua;
+}
