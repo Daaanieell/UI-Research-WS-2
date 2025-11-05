@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ui="UnityEngine.UIElements"
+    xmlns:uie="UnityEditor.UIElements"
+    xsi:noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd"
+>
+    <Style src="project://database/Assets/Materials/MyFirstEditorWindow.uss?fileID=7433441132597879392&amp;guid=6aaae4ee4a3ce4a49a57597d59a59f9e&amp;type=3#MyFirstEditorWindow" />
+    
+    <ui:Label class="my-title" text="Weapon Selector" />
+    
+</ui:UXML>
