@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be4da936663440ef3a76a6803e4a913b, type: 3}
+  m_Name: Bow2
+  m_EditorClassIdentifier: Assembly-CSharp::Weapon
+  weaponName: Bow
+  damage: 3
+  attackSpeed: 5
+  weaponSprite: {fileID: 0}
+  weaponPrefab: {fileID: 7547124645696010246, guid: d258b9081195b2944ab2ccbe0789fae4, type: 3}
+  weaponType: 2
